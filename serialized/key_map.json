@@ -1,0 +1,203 @@
+{
+    "root_motor": [
+        0,
+        3,
+        5,
+        9,
+        6,
+        10,
+        12,
+        15
+    ],
+    "velocity_root_motor": [
+        0,
+        3,
+        5,
+        9,
+        6,
+        10,
+        12,
+        15
+    ],
+    "acceleration_root_motor": [
+        0,
+        3,
+        5,
+        9,
+        6,
+        10,
+        12,
+        15
+    ],
+    "body_rotors": [
+        0,
+        6,
+        10,
+        12
+    ],
+    "root_rotor": [
+        0,
+        6,
+        10,
+        12
+    ],
+    "chained_body_rotors": [
+        0,
+        3,
+        5,
+        9,
+        6,
+        10,
+        12,
+        15
+    ],
+    "velocity_body_rotors": [
+        0,
+        6,
+        10,
+        12
+    ],
+    "velocity_root_rotor": [
+        0,
+        6,
+        10,
+        12
+    ],
+    "acceleration_body_rotors": [
+        0,
+        6,
+        10,
+        12
+    ],
+    "acceleration_root_rotor": [
+        0,
+        6,
+        10,
+        12
+    ],
+    "root_translator": [
+        0,
+        3,
+        5,
+        9
+    ],
+    "velocity_root_translator": [
+        0,
+        3,
+        5,
+        9
+    ],
+    "acceleration_root_translator": [
+        0,
+        3,
+        5,
+        9
+    ],
+    "log_root_motor": [
+        3,
+        5,
+        9,
+        6,
+        10,
+        12
+    ],
+    "log_velocity_root_motor": [
+        3,
+        5,
+        9,
+        6,
+        10,
+        12
+    ],
+    "log_acceleration_root_motor": [
+        3,
+        5,
+        9,
+        6,
+        10,
+        12
+    ],
+    "log_body_rotors": [
+        6,
+        10,
+        12
+    ],
+    "log_root_rotor": [
+        6,
+        10,
+        12
+    ],
+    "log_chained_body_rotors": [
+        3,
+        5,
+        9,
+        6,
+        10,
+        12
+    ],
+    "log_velocity_body_rotors": [
+        6,
+        10,
+        12
+    ],
+    "log_velocity_root_rotor": [
+        6,
+        10,
+        12
+    ],
+    "log_acceleration_body_rotors": [
+        6,
+        10,
+        12
+    ],
+    "log_acceleration_root_rotor": [
+        6,
+        10,
+        12
+    ],
+    "log_root_translator": [
+        3,
+        5,
+        9
+    ],
+    "log_velocity_root_translator": [
+        3,
+        5,
+        9
+    ],
+    "log_acceleration_root_translator": [
+        3,
+        5,
+        9
+    ],
+    "floor": [
+        1,
+        2,
+        4,
+        8
+    ],
+    "log_root": [
+        3,
+        5,
+        9,
+        6,
+        10,
+        12
+    ],
+    "log_velocity_root": [
+        3,
+        5,
+        9,
+        6,
+        10,
+        12
+    ],
+    "log_acceleration_root": [
+        3,
+        5,
+        9,
+        6,
+        10,
+        12
+    ]
+}

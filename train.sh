@@ -1,0 +1,1 @@
+tensorboard --logdir /workspaces/geometric-algebra-transformer/runs/ga_mdm --host 0.0.0.0 --port 6005

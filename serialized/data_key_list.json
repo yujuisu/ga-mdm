@@ -1,0 +1,80 @@
+{
+  "acceleration_motor_diffuse_keys": [
+    "acceleration_root_motor",
+    "velocity_root_motor_0",
+    "acceleration_body_rotors",
+    "velocity_body_rotors_0",
+    "body_rotors_0"
+  ],
+  "acceleration_rot_trans_diffuse_keys": [
+    "acceleration_root_translator",
+    "acceleration_root_rotor",
+    "velocity_root_translator_0",
+    "velocity_root_rotor_0",
+    "acceleration_body_rotors",
+    "velocity_body_rotors_0",
+    "body_rotors_0"
+  ],
+  "acceleration_lie_diffuse_keys": [
+    "log_acceleration_root_motor",
+    "log_velocity_root_motor_0",
+    "log_acceleration_body_rotors",
+    "log_velocity_body_rotors_0",
+    "log_body_rotors_0"
+  ],
+  "acceleration_lie_rot_trans_diffuse_keys": [
+    "log_acceleration_root_translator",
+    "log_acceleration_root_rotor",
+    "log_velocity_root_translator_0",
+    "log_velocity_root_rotor_0",
+    "log_acceleration_body_rotors",
+    "log_velocity_body_rotors_0",
+    "log_body_rotors_0"
+  ],
+    "velocity_lie_rot_trans_diffuse_keys": [
+    "log_velocity_root_translator",
+    "log_velocity_root_rotor",
+    "log_velocity_body_rotors",
+    "log_body_rotors_0",
+    "floor_0"
+  ],
+  "lie_rot_trans_answer_keys": [
+    "log_root_translator",
+    "log_root_rotor",
+    "log_velocity_root_translator",
+    "log_velocity_root_rotor",
+    "log_acceleration_root_translator",
+    "log_acceleration_root_rotor",
+    "floor",
+    "log_body_rotors",
+    "log_velocity_body_rotors",
+    "log_acceleration_body_rotors",
+    "log_chained_body_rotors"
+  ],
+  "lie_rot_trans_answer_keys_2": [
+    "root_motor",
+    "acceleration_root_motor",
+    "velocity_root_motor",
+    "body_rotors",
+    "velocity_body_rotors",
+    "acceleration_body_rotors",
+    "chained_body_rotors"
+  ],
+    "lie_rot_trans_answer_keys_4": [
+    "root_motor",
+    "velocity_root_motor",
+    "body_rotors",
+    "velocity_body_rotors",
+    "chained_body_rotors"
+  ],
+    "lie_rot_trans_answer_keys_3": [
+    "root_motor",
+    "body_rotors",
+    "chained_body_rotors"
+  ],
+    "lie_rot_trans_diffuse_keys": [
+    "log_root_translator",
+    "log_root_rotor",
+    "log_body_rotors"
+  ]
+}
