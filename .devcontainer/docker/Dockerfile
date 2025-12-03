@@ -12,7 +12,7 @@ RUN apt update && \
         && \
     rm -rf /var/lib/apt/lists/*
 
-COPY docker/requirements.txt requirements.txt
+COPY .devcontainer/docker/requirements.txt requirements.txt
 
 RUN python3 -m pip install --no-cache-dir --upgrade pip && \
     python3 -m pip install --no-cache-dir --upgrade --requirement requirements.txt --find-links https://data.pyg.org/whl/torch-2.2.1+cu118.html --extra-index-url https://download.pytorch.org/whl/cu118

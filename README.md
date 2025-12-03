@@ -26,5 +26,5 @@ python train_ga_mdm.py
 
 
 ## Data Processing
-
+Follow the steps of the [notebook](process_data/amass_motor_bivector_263.ipynb)
 ## Training
