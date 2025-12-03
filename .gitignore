@@ -3,5 +3,6 @@ texts/
 runs/
 checkpoints/
 lab/
-test_data/
+
 motions/
+test_data/
