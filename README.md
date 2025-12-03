@@ -1,5 +1,5 @@
 ## Environment
-I set the environment to run with GATr, which requires docker or a pc with ubuntu 20.04. Otherwise you just need kingdon and torch.
+I set the environment to run with GATr (requires docker or a pc with ubuntu 20.04). Otherwise you just need kingdon and torch.
 1. Clone GATr.
 
 ```bash
@@ -10,7 +10,7 @@ git clone https://github.com/Qualcomm-AI-research/geometric-algebra-transformer
 cd geometric-algebra-transformer
 git submodule add https://github.com/yujuisu/ga-mdm.git
 ```
-3. Build the Docker image (Here I use [devcontainer](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli))
+3. Build the Docker image (using [devcontainer](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli))
 ```bash
 cp -r ga-mdm/.devcontainer .devcontainer
 devcontainer up --workspace-folder .
@@ -26,4 +26,5 @@ python train_ga_mdm.py
 
 
 ## Data Processing
+
 ## Training
