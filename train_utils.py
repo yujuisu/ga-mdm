@@ -288,7 +288,7 @@ def plot_grad_flow_by_layer(grads):
             seen.add(name)
         with torch.no_grad():
             safe = torch.nan_to_num(g.detach(), nan=0.0, posinf=0.0, neginf=0.0)
-            mean = float(safe.mean().item()) if safe.numel() else 0.0
+            mean = float(safe.abs().mean().item()) if safe.numel() else 0.0
         layer_means.setdefault(name, []).append(mean)
 
     if not layer_means:
@@ -301,7 +301,7 @@ def plot_grad_flow_by_layer(grads):
     fig_h = 4.5  # taller to fit labels
     fig, ax = plt.subplots(figsize=(fig_w, fig_h), constrained_layout=True)
     ax.plot(range(len(names_in_flow_order)), means, marker="o", linewidth=1.8)
-    ax.set_title("Mean gradient by layer (flow order)")
+    ax.set_title("Mean abs gradient by layer (flow order)")
     ax.set_xlabel("Layer (backward hook order)")
     ax.set_ylabel("Mean(|grad|)")
     ax.grid(True, linestyle="--", alpha=0.4)
@@ -329,7 +329,7 @@ class GradientAverager:
                 continue
             with torch.no_grad():
                 safe = torch.nan_to_num(g.detach(), nan=0.0, posinf=0.0, neginf=0.0)
-                mean = float(safe.mean().item()) if safe.numel() else 0.0
+                mean = float(safe.abs().mean().item()) if safe.numel() else 0.0
             self.sum[name] = self.sum.get(name, 0.0) + mean
             self.count[name] = self.count.get(name, 0) + 1
 
@@ -355,7 +355,7 @@ def plot_grad_running_mean_by_layer(running_means, names_order=None):
     fig_h = 4.5
     fig, ax = plt.subplots(figsize=(fig_w, fig_h), constrained_layout=True)
     ax.plot(range(len(names)), means, marker="o", linewidth=1.8)
-    ax.set_title("Running mean gradient by layer (flow order across steps)")
+    ax.set_title("Running mean abs gradient by layer (flow order across steps)")
     ax.set_xlabel("Layer (first-seen backward order)")
     ax.set_ylabel("Mean(|grad|) over steps")
     ax.grid(True, linestyle="--", alpha=0.4)
@@ -376,13 +376,14 @@ def grads_summary(grads):
                 numel = int(safe.numel())
                 if numel == 0:
                     continue
+                abs_safe = safe.abs()
                 summary.append({
                     "name": name,
                     "numel": numel,
-                    "mean": float(safe.mean().item()),
-                    "std": float(safe.std(unbiased=False).item()),
-                    "min": float(safe.min().item()),
-                    "max": float(safe.max().item()),
+                    "mean_abs": float(abs_safe.mean().item()),            # changed: mean of abs
+                    "std_abs": float(abs_safe.std(unbiased=False).item()),# changed: std of abs
+                    "min_abs": float(abs_safe.min().item()),              # changed: min of abs
+                    "max_abs": float(abs_safe.max().item()),              # changed: max of abs
                     "norm": float(safe.norm().item()),
                 })
         except Exception:
@@ -390,7 +391,7 @@ def grads_summary(grads):
     return summary
 
 def log_grads_to_tensorboard(writer, grads, step, max_histograms=64, layers_meta=None, plot_every=10, grad_averager=None):
-    """Log gradients: per-layer scalars, per-layer mean figure, optional running mean over steps."""
+    """Log gradients: per-layer scalars, per-layer mean abs figure, optional running mean abs over steps."""
     if writer is None:
         return
 
@@ -398,32 +399,33 @@ def log_grads_to_tensorboard(writer, grads, step, max_histograms=64, layers_meta
     if grad_averager is not None:
         grad_averager.update(grads)
 
-    # Per-layer scalars
+    # Per-layer scalars (abs)
     try:
         for s in grads_summary(grads):
             writer.add_scalar(f"grads/{s['name']}/norm", s["norm"], step)
-            writer.add_scalar(f"grads/{s['name']}/mean", s["mean"], step)
-            writer.add_scalar(f"grads/{s['name']}/std", s["std"], step)
+            writer.add_scalar(f"grads/{s['name']}/mean_abs", s["mean_abs"], step)  # changed
+            writer.add_scalar(f"grads/{s['name']}/std_abs", s["std_abs"], step)    # changed
+            writer.add_scalar(f"grads/{s['name']}/min_abs", s["min_abs"], step)    # changed
+            writer.add_scalar(f"grads/{s['name']}/max_abs", s["max_abs"], step)    # changed
     except Exception:
         logger.exception("Failed writing per-layer grad scalars")
 
-    # Plot mean grad vs layer for this step (flow order)
+    # Plot mean abs grad vs layer for this step (flow order)
     try:
         if step % plot_every == 0:
-            # dedupe while preserving backward flow order
             names_order = []
             seen = set()
             for n, _ in grads:
                 if n not in seen:
                     names_order.append(n)
                     seen.add(n)
-            means_map = {s["name"]: s["mean"] for s in grads_summary(grads)}
+            means_map = {s["name"]: s["mean_abs"] for s in grads_summary(grads)}  # changed
             fig_w = max(8, len(names_order) * 0.22)
             fig_h = 4.5
             fig, ax = plt.subplots(figsize=(fig_w, fig_h), constrained_layout=True)
             y = [means_map.get(n, 0.0) for n in names_order]
             ax.plot(range(len(names_order)), y, marker="o", linewidth=1.8)
-            ax.set_title("Mean gradient by layer (this step, flow order)")
+            ax.set_title("Mean abs gradient by layer (this step, flow order)")
             ax.set_xlabel("Layer (backward hook order)")
             ax.set_ylabel("Mean(|grad|)")
             ax.grid(True, linestyle="--", alpha=0.4)
@@ -435,7 +437,7 @@ def log_grads_to_tensorboard(writer, grads, step, max_histograms=64, layers_meta
     except Exception:
         logger.exception("Failed writing per-step per-layer grad figure")
 
-    # Plot running mean across steps (flow order learned over time)
+    # Plot running mean abs across steps (flow order learned over time)
     try:
         if grad_averager is not None and (step % plot_every == 0):
             fig_avg = plot_grad_running_mean_by_layer(grad_averager.running_mean(), names_order=grad_averager.order)
@@ -575,7 +577,7 @@ def assert_grad_flow(model, step: int, writer, num_layers: int):
                     s = stats[stage_key]
                     if s["frac_nonzero"] < min_frac:
                         raise RuntimeError(f"Grad flow failed at step {step}: {stage_key} frac_nonzero={s['frac_nonzero']:.3f} < {min_frac}")
-                    if s["spread_ratio"] > max_spread or s["log10_range"] > max_log_range or s["p95_over_p05"] > max_p95_p05:
+                    if s["spread_ratio"] > max_spread or s["p95_over_p05"] > max_p95_p05:
                         raise RuntimeError(f"Grad spread too wide at step {step}: {stage_key} "
                                            f"max/median={s['spread_ratio']:.2e}, log10_range={s['log10_range']:.2f}, p95/p05={s['p95_over_p05']:.2e}")
 

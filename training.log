@@ -1,1 +1,1445 @@
 2025-12-04 03:19:15,791 | INFO | train_utils | Train steps: 60000
+2025-12-04 03:48:58,575 | INFO | train_utils | Train steps: 60000
+2025-12-04 05:21:36,760 | INFO | train_utils | Train steps: 20000
+2025-12-04 05:21:36,760 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 05:21:36,762 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.4.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.4.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.5.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.5.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.6.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.6.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.7.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.7.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 05:21:36,762 | INFO | train_utils | Starting epoch 0
+2025-12-04 05:23:00,634 | INFO | train_utils | Train steps: 20000
+2025-12-04 05:23:00,634 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 05:23:00,636 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.4.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.4.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.5.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.5.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.6.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.6.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.7.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.7.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 05:23:00,636 | INFO | train_utils | Starting epoch 0
+2025-12-04 05:23:13,334 | INFO | train_utils | Epoch 1, train_loss=8814.374817
+2025-12-04 05:23:13,335 | INFO | train_utils | Starting epoch 1
+2025-12-04 05:23:26,644 | INFO | train_utils | Epoch 2, train_loss=7159.133862
+2025-12-04 05:23:26,648 | INFO | train_utils | Starting epoch 2
+2025-12-04 05:23:41,263 | INFO | train_utils | Epoch 3, train_loss=5020.620898
+2025-12-04 05:23:41,263 | INFO | train_utils | Starting epoch 3
+2025-12-04 05:23:53,740 | INFO | train_utils | Epoch 4, train_loss=5340.229022
+2025-12-04 05:23:53,741 | INFO | train_utils | Starting epoch 4
+2025-12-04 05:24:06,117 | INFO | train_utils | Epoch 5, train_loss=4665.757727
+2025-12-04 05:24:06,117 | INFO | train_utils | Starting epoch 5
+2025-12-04 05:24:19,143 | INFO | train_utils | Epoch 6, train_loss=5396.984656
+2025-12-04 05:24:19,144 | INFO | train_utils | Starting epoch 6
+2025-12-04 05:24:31,969 | INFO | train_utils | Epoch 7, train_loss=5381.760541
+2025-12-04 05:24:31,969 | INFO | train_utils | Starting epoch 7
+2025-12-04 05:24:44,372 | INFO | train_utils | Epoch 8, train_loss=5288.527502
+2025-12-04 05:24:44,372 | INFO | train_utils | Starting epoch 8
+2025-12-04 05:24:56,682 | INFO | train_utils | Epoch 9, train_loss=3991.463708
+2025-12-04 05:24:56,682 | INFO | train_utils | Starting epoch 9
+2025-12-04 05:25:08,835 | INFO | train_utils | Epoch 10, train_loss=4847.062842
+2025-12-04 05:25:08,836 | INFO | train_utils | Starting epoch 10
+2025-12-04 05:25:20,989 | INFO | train_utils | Epoch 11, train_loss=5311.326184
+2025-12-04 05:25:20,990 | INFO | train_utils | Starting epoch 11
+2025-12-04 05:25:33,583 | INFO | train_utils | Epoch 12, train_loss=5194.376929
+2025-12-04 05:25:33,584 | INFO | train_utils | Starting epoch 12
+2025-12-04 05:25:45,751 | INFO | train_utils | Epoch 13, train_loss=5252.444690
+2025-12-04 05:25:45,751 | INFO | train_utils | Starting epoch 13
+2025-12-04 05:25:57,970 | INFO | train_utils | Epoch 14, train_loss=4704.043494
+2025-12-04 05:25:57,970 | INFO | train_utils | Starting epoch 14
+2025-12-04 05:26:10,066 | INFO | train_utils | Epoch 15, train_loss=3887.768945
+2025-12-04 05:26:10,067 | INFO | train_utils | Starting epoch 15
+2025-12-04 05:26:22,315 | INFO | train_utils | Epoch 16, train_loss=6268.672168
+2025-12-04 05:26:22,318 | INFO | train_utils | Starting epoch 16
+2025-12-04 05:26:34,365 | INFO | train_utils | Epoch 17, train_loss=3637.473114
+2025-12-04 05:26:34,366 | INFO | train_utils | Starting epoch 17
+2025-12-04 05:26:46,426 | INFO | train_utils | Epoch 18, train_loss=4492.896582
+2025-12-04 05:26:46,427 | INFO | train_utils | Starting epoch 18
+2025-12-04 05:26:58,489 | INFO | train_utils | Epoch 19, train_loss=3624.090955
+2025-12-04 05:26:58,490 | INFO | train_utils | Starting epoch 19
+2025-12-04 05:27:10,825 | INFO | train_utils | Epoch 20, train_loss=3863.550677
+2025-12-04 05:27:10,826 | INFO | train_utils | Starting epoch 20
+2025-12-04 05:27:22,960 | INFO | train_utils | Epoch 21, train_loss=4963.245190
+2025-12-04 05:27:22,960 | INFO | train_utils | Starting epoch 21
+2025-12-04 05:27:35,076 | INFO | train_utils | Epoch 22, train_loss=4485.416858
+2025-12-04 05:27:35,077 | INFO | train_utils | Starting epoch 22
+2025-12-04 05:27:47,903 | INFO | train_utils | Epoch 23, train_loss=4058.357245
+2025-12-04 05:27:47,903 | INFO | train_utils | Starting epoch 23
+2025-12-04 05:28:00,689 | INFO | train_utils | Epoch 24, train_loss=3833.392578
+2025-12-04 05:28:00,690 | INFO | train_utils | Starting epoch 24
+2025-12-04 05:28:13,162 | INFO | train_utils | Epoch 25, train_loss=4080.379565
+2025-12-04 05:28:13,163 | INFO | train_utils | Starting epoch 25
+2025-12-04 05:28:25,301 | INFO | train_utils | Epoch 26, train_loss=5353.914331
+2025-12-04 05:28:25,302 | INFO | train_utils | Starting epoch 26
+2025-12-04 05:28:37,744 | INFO | train_utils | Epoch 27, train_loss=3770.997681
+2025-12-04 05:28:37,744 | INFO | train_utils | Starting epoch 27
+2025-12-04 05:28:49,873 | INFO | train_utils | Epoch 28, train_loss=5424.953516
+2025-12-04 05:28:49,874 | INFO | train_utils | Starting epoch 28
+2025-12-04 05:29:30,063 | INFO | train_utils | Train steps: 20000
+2025-12-04 05:29:30,063 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 05:29:30,065 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.4.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.4.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.5.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.5.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.6.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.6.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.7.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.7.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 05:29:30,065 | INFO | train_utils | Starting epoch 0
+2025-12-04 05:29:42,453 | INFO | train_utils | Epoch 1, train_loss=5509.703442
+2025-12-04 05:29:42,454 | INFO | train_utils | Starting epoch 1
+2025-12-04 05:29:54,711 | INFO | train_utils | Epoch 2, train_loss=6200.119409
+2025-12-04 05:29:54,712 | INFO | train_utils | Starting epoch 2
+2025-12-04 05:30:07,180 | INFO | train_utils | Epoch 3, train_loss=5249.873083
+2025-12-04 05:30:07,181 | INFO | train_utils | Starting epoch 3
+2025-12-04 05:30:19,585 | INFO | train_utils | Epoch 4, train_loss=6437.326709
+2025-12-04 05:30:19,586 | INFO | train_utils | Starting epoch 4
+2025-12-04 05:30:31,617 | INFO | train_utils | Epoch 5, train_loss=6207.006982
+2025-12-04 05:30:31,617 | INFO | train_utils | Starting epoch 5
+2025-12-04 05:35:07,404 | INFO | train_utils | Train steps: 20000
+2025-12-04 05:35:07,404 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 05:35:07,407 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.4.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.4.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.5.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.5.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.6.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.6.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.7.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.7.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 05:35:07,407 | INFO | train_utils | Starting epoch 0
+2025-12-04 05:35:20,703 | INFO | train_utils | Epoch 1, train_loss=6165.912695
+2025-12-04 05:35:20,704 | INFO | train_utils | Starting epoch 1
+2025-12-04 05:35:35,551 | INFO | train_utils | Epoch 2, train_loss=6365.008301
+2025-12-04 05:35:35,552 | INFO | train_utils | Starting epoch 2
+2025-12-04 05:35:51,349 | INFO | train_utils | Epoch 3, train_loss=6334.015942
+2025-12-04 05:35:51,351 | INFO | train_utils | Starting epoch 3
+2025-12-04 05:36:03,977 | INFO | train_utils | Epoch 4, train_loss=4517.171277
+2025-12-04 05:36:03,977 | INFO | train_utils | Starting epoch 4
+2025-12-04 05:36:23,646 | INFO | train_utils | Train steps: 20000
+2025-12-04 05:36:23,646 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 05:36:23,648 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.4.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.4.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.4.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.4.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.5.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.5.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.5.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.5.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.6.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.6.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.6.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.6.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.7.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.7.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.7.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.7.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.4.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.5.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.6.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.7.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 05:36:23,648 | INFO | train_utils | Starting epoch 0
+2025-12-04 05:36:35,704 | INFO | train_utils | Epoch 1, train_loss=8883.212817
+2025-12-04 05:36:35,705 | INFO | train_utils | Starting epoch 1
+2025-12-04 05:36:47,165 | INFO | train_utils | Epoch 2, train_loss=6377.953271
+2025-12-04 05:36:47,169 | INFO | train_utils | Starting epoch 2
+2025-12-04 05:36:59,002 | INFO | train_utils | Epoch 3, train_loss=5439.772119
+2025-12-04 05:36:59,003 | INFO | train_utils | Starting epoch 3
+2025-12-04 05:37:10,499 | INFO | train_utils | Epoch 4, train_loss=7700.351794
+2025-12-04 05:37:10,502 | INFO | train_utils | Starting epoch 4
+2025-12-04 05:37:22,048 | INFO | train_utils | Epoch 5, train_loss=4984.866156
+2025-12-04 05:37:22,049 | INFO | train_utils | Starting epoch 5
+2025-12-04 05:37:33,649 | INFO | train_utils | Epoch 6, train_loss=5541.944153
+2025-12-04 05:37:33,650 | INFO | train_utils | Starting epoch 6
+2025-12-04 05:37:45,159 | INFO | train_utils | Epoch 7, train_loss=6774.067700
+2025-12-04 05:37:45,161 | INFO | train_utils | Starting epoch 7
+2025-12-04 05:37:56,662 | INFO | train_utils | Epoch 8, train_loss=4151.333398
+2025-12-04 05:37:56,664 | INFO | train_utils | Starting epoch 8
+2025-12-04 05:38:08,734 | INFO | train_utils | Epoch 9, train_loss=4190.214600
+2025-12-04 05:38:08,734 | INFO | train_utils | Starting epoch 9
+2025-12-04 05:38:20,314 | INFO | train_utils | Epoch 10, train_loss=6566.327246
+2025-12-04 05:38:20,315 | INFO | train_utils | Starting epoch 10
+2025-12-04 05:38:31,835 | INFO | train_utils | Epoch 11, train_loss=5907.543585
+2025-12-04 05:38:31,836 | INFO | train_utils | Starting epoch 11
+2025-12-04 05:38:43,431 | INFO | train_utils | Epoch 12, train_loss=5909.866577
+2025-12-04 05:38:43,432 | INFO | train_utils | Starting epoch 12
+2025-12-04 05:38:55,103 | INFO | train_utils | Epoch 13, train_loss=6065.778125
+2025-12-04 05:38:55,103 | INFO | train_utils | Starting epoch 13
+2025-12-04 05:39:06,622 | INFO | train_utils | Epoch 14, train_loss=4910.338782
+2025-12-04 05:39:06,623 | INFO | train_utils | Starting epoch 14
+2025-12-04 05:39:18,650 | INFO | train_utils | Epoch 15, train_loss=6952.649506
+2025-12-04 05:39:18,650 | INFO | train_utils | Starting epoch 15
+2025-12-04 05:39:30,133 | INFO | train_utils | Epoch 16, train_loss=5451.606226
+2025-12-04 05:39:30,134 | INFO | train_utils | Starting epoch 16
+2025-12-04 05:40:10,889 | INFO | train_utils | Train steps: 20000
+2025-12-04 05:40:10,889 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 05:40:10,890 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 05:40:10,890 | INFO | train_utils | Starting epoch 0
+2025-12-04 05:40:20,867 | INFO | train_utils | Epoch 1, train_loss=6160.389844
+2025-12-04 05:40:20,872 | INFO | train_utils | Starting epoch 1
+2025-12-04 05:40:30,649 | INFO | train_utils | Epoch 2, train_loss=6637.550366
+2025-12-04 05:40:30,650 | INFO | train_utils | Starting epoch 2
+2025-12-04 05:40:40,648 | INFO | train_utils | Epoch 3, train_loss=5949.182751
+2025-12-04 05:40:40,648 | INFO | train_utils | Starting epoch 3
+2025-12-04 05:40:50,470 | INFO | train_utils | Epoch 4, train_loss=6940.635132
+2025-12-04 05:40:50,471 | INFO | train_utils | Starting epoch 4
+2025-12-04 05:41:00,376 | INFO | train_utils | Epoch 5, train_loss=6566.534534
+2025-12-04 05:41:00,376 | INFO | train_utils | Starting epoch 5
+2025-12-04 05:41:10,662 | INFO | train_utils | Epoch 6, train_loss=5953.375879
+2025-12-04 05:41:10,664 | INFO | train_utils | Starting epoch 6
+2025-12-04 05:41:21,081 | INFO | train_utils | Epoch 7, train_loss=4582.335602
+2025-12-04 05:41:21,081 | INFO | train_utils | Starting epoch 7
+2025-12-04 05:41:30,972 | INFO | train_utils | Epoch 8, train_loss=6017.931128
+2025-12-04 05:41:30,972 | INFO | train_utils | Starting epoch 8
+2025-12-04 05:41:40,757 | INFO | train_utils | Epoch 9, train_loss=5799.558167
+2025-12-04 05:41:40,758 | INFO | train_utils | Starting epoch 9
+2025-12-04 05:41:50,925 | INFO | train_utils | Epoch 10, train_loss=6375.882056
+2025-12-04 05:41:50,926 | INFO | train_utils | Starting epoch 10
+2025-12-04 05:42:00,742 | INFO | train_utils | Epoch 11, train_loss=4916.986670
+2025-12-04 05:42:00,742 | INFO | train_utils | Starting epoch 11
+2025-12-04 05:42:10,579 | INFO | train_utils | Epoch 12, train_loss=5976.183252
+2025-12-04 05:42:10,580 | INFO | train_utils | Starting epoch 12
+2025-12-04 05:42:20,472 | INFO | train_utils | Epoch 13, train_loss=6199.297925
+2025-12-04 05:42:20,473 | INFO | train_utils | Starting epoch 13
+2025-12-04 05:42:30,512 | INFO | train_utils | Epoch 14, train_loss=4514.810547
+2025-12-04 05:42:30,513 | INFO | train_utils | Starting epoch 14
+2025-12-04 05:42:40,414 | INFO | train_utils | Epoch 15, train_loss=2937.563129
+2025-12-04 05:42:40,415 | INFO | train_utils | Starting epoch 15
+2025-12-04 05:42:50,541 | INFO | train_utils | Epoch 16, train_loss=4036.571033
+2025-12-04 05:42:50,542 | INFO | train_utils | Starting epoch 16
+2025-12-04 05:43:00,678 | INFO | train_utils | Epoch 17, train_loss=4021.476147
+2025-12-04 05:43:00,678 | INFO | train_utils | Starting epoch 17
+2025-12-04 05:43:10,569 | INFO | train_utils | Epoch 18, train_loss=4762.688135
+2025-12-04 05:43:10,569 | INFO | train_utils | Starting epoch 18
+2025-12-04 05:43:20,401 | INFO | train_utils | Epoch 19, train_loss=4496.842529
+2025-12-04 05:43:20,402 | INFO | train_utils | Starting epoch 19
+2025-12-04 05:43:30,420 | INFO | train_utils | Epoch 20, train_loss=3206.737592
+2025-12-04 05:43:30,421 | INFO | train_utils | Starting epoch 20
+2025-12-04 05:43:40,875 | INFO | train_utils | Epoch 21, train_loss=2383.017114
+2025-12-04 05:43:40,875 | INFO | train_utils | Starting epoch 21
+2025-12-04 05:43:50,864 | INFO | train_utils | Epoch 22, train_loss=5884.628845
+2025-12-04 05:43:50,864 | INFO | train_utils | Starting epoch 22
+2025-12-04 05:44:00,944 | INFO | train_utils | Epoch 23, train_loss=6515.436230
+2025-12-04 05:44:00,945 | INFO | train_utils | Starting epoch 23
+2025-12-04 05:44:10,861 | INFO | train_utils | Epoch 24, train_loss=4187.035681
+2025-12-04 05:44:10,862 | INFO | train_utils | Starting epoch 24
+2025-12-04 05:44:20,938 | INFO | train_utils | Epoch 25, train_loss=3332.971667
+2025-12-04 05:44:20,938 | INFO | train_utils | Starting epoch 25
+2025-12-04 05:44:30,823 | INFO | train_utils | Epoch 26, train_loss=3351.839978
+2025-12-04 05:44:30,823 | INFO | train_utils | Starting epoch 26
+2025-12-04 05:44:41,289 | INFO | train_utils | Epoch 27, train_loss=3233.718085
+2025-12-04 05:44:41,290 | INFO | train_utils | Starting epoch 27
+2025-12-04 05:44:51,448 | INFO | train_utils | Epoch 28, train_loss=3617.478357
+2025-12-04 05:44:51,449 | INFO | train_utils | Starting epoch 28
+2025-12-04 05:45:01,878 | INFO | train_utils | Epoch 29, train_loss=3066.077063
+2025-12-04 05:45:01,879 | INFO | train_utils | Starting epoch 29
+2025-12-04 05:45:11,948 | INFO | train_utils | Epoch 30, train_loss=6477.883398
+2025-12-04 05:45:11,948 | INFO | train_utils | Starting epoch 30
+2025-12-04 05:45:22,102 | INFO | train_utils | Epoch 31, train_loss=5439.233167
+2025-12-04 05:45:22,103 | INFO | train_utils | Starting epoch 31
+2025-12-04 05:45:32,980 | INFO | train_utils | Epoch 32, train_loss=5380.485352
+2025-12-04 05:45:32,980 | INFO | train_utils | Starting epoch 32
+2025-12-04 05:45:42,965 | INFO | train_utils | Epoch 33, train_loss=3965.665784
+2025-12-04 05:45:42,966 | INFO | train_utils | Starting epoch 33
+2025-12-04 05:45:53,319 | INFO | train_utils | Epoch 34, train_loss=4356.764880
+2025-12-04 05:45:53,319 | INFO | train_utils | Starting epoch 34
+2025-12-04 05:46:03,461 | INFO | train_utils | Epoch 35, train_loss=3864.764111
+2025-12-04 05:46:03,462 | INFO | train_utils | Starting epoch 35
+2025-12-04 05:46:13,798 | INFO | train_utils | Epoch 36, train_loss=5451.056238
+2025-12-04 05:46:13,798 | INFO | train_utils | Starting epoch 36
+2025-12-04 05:46:23,868 | INFO | train_utils | Epoch 37, train_loss=4254.109387
+2025-12-04 05:46:23,869 | INFO | train_utils | Starting epoch 37
+2025-12-04 05:46:33,843 | INFO | train_utils | Epoch 38, train_loss=4952.624438
+2025-12-04 05:46:33,844 | INFO | train_utils | Starting epoch 38
+2025-12-04 05:46:44,071 | INFO | train_utils | Epoch 39, train_loss=5989.480981
+2025-12-04 05:46:44,071 | INFO | train_utils | Starting epoch 39
+2025-12-04 05:46:54,000 | INFO | train_utils | Epoch 40, train_loss=5738.690747
+2025-12-04 05:46:54,001 | INFO | train_utils | Starting epoch 40
+2025-12-04 05:47:03,887 | INFO | train_utils | Epoch 41, train_loss=4056.701257
+2025-12-04 05:47:03,887 | INFO | train_utils | Starting epoch 41
+2025-12-04 05:47:13,999 | INFO | train_utils | Epoch 42, train_loss=5134.692798
+2025-12-04 05:47:13,999 | INFO | train_utils | Starting epoch 42
+2025-12-04 05:47:24,074 | INFO | train_utils | Epoch 43, train_loss=2411.279276
+2025-12-04 05:47:24,074 | INFO | train_utils | Starting epoch 43
+2025-12-04 05:47:34,369 | INFO | train_utils | Epoch 44, train_loss=3383.327069
+2025-12-04 05:47:34,369 | INFO | train_utils | Starting epoch 44
+2025-12-04 05:47:44,491 | INFO | train_utils | Epoch 45, train_loss=4556.537927
+2025-12-04 05:47:44,492 | INFO | train_utils | Starting epoch 45
+2025-12-04 05:47:54,589 | INFO | train_utils | Epoch 46, train_loss=4104.567441
+2025-12-04 05:47:54,589 | INFO | train_utils | Starting epoch 46
+2025-12-04 05:48:04,965 | INFO | train_utils | Epoch 47, train_loss=4208.929584
+2025-12-04 05:48:04,965 | INFO | train_utils | Starting epoch 47
+2025-12-04 05:48:15,130 | INFO | train_utils | Epoch 48, train_loss=4803.699011
+2025-12-04 05:48:15,131 | INFO | train_utils | Starting epoch 48
+2025-12-04 05:48:25,244 | INFO | train_utils | Epoch 49, train_loss=5352.682227
+2025-12-04 05:48:25,244 | INFO | train_utils | Starting epoch 49
+2025-12-04 05:48:35,286 | INFO | train_utils | Epoch 50, train_loss=4130.987219
+2025-12-04 05:48:35,286 | INFO | train_utils | Starting epoch 50
+2025-12-04 05:48:45,953 | INFO | train_utils | Epoch 51, train_loss=3949.853552
+2025-12-04 05:48:45,954 | INFO | train_utils | Starting epoch 51
+2025-12-04 05:48:56,643 | INFO | train_utils | Epoch 52, train_loss=4486.723315
+2025-12-04 05:48:56,643 | INFO | train_utils | Starting epoch 52
+2025-12-04 05:49:07,912 | INFO | train_utils | Epoch 53, train_loss=6414.869971
+2025-12-04 05:49:07,913 | INFO | train_utils | Starting epoch 53
+2025-12-04 05:49:18,704 | INFO | train_utils | Epoch 54, train_loss=3168.440259
+2025-12-04 05:49:18,705 | INFO | train_utils | Starting epoch 54
+2025-12-04 05:49:29,196 | INFO | train_utils | Epoch 55, train_loss=2451.233191
+2025-12-04 05:49:29,196 | INFO | train_utils | Starting epoch 55
+2025-12-04 05:49:39,436 | INFO | train_utils | Epoch 56, train_loss=2635.734186
+2025-12-04 05:49:39,436 | INFO | train_utils | Starting epoch 56
+2025-12-04 05:49:49,524 | INFO | train_utils | Epoch 57, train_loss=4345.537524
+2025-12-04 05:49:49,524 | INFO | train_utils | Starting epoch 57
+2025-12-04 05:50:00,263 | INFO | train_utils | Epoch 58, train_loss=3314.306360
+2025-12-04 05:50:00,263 | INFO | train_utils | Starting epoch 58
+2025-12-04 05:50:10,458 | INFO | train_utils | Epoch 59, train_loss=4904.615001
+2025-12-04 05:50:10,458 | INFO | train_utils | Starting epoch 59
+2025-12-04 05:50:21,093 | INFO | train_utils | Epoch 60, train_loss=4510.472681
+2025-12-04 05:50:21,093 | INFO | train_utils | Starting epoch 60
+2025-12-04 05:50:31,238 | INFO | train_utils | Epoch 61, train_loss=4802.337415
+2025-12-04 05:50:31,239 | INFO | train_utils | Starting epoch 61
+2025-12-04 05:50:41,554 | INFO | train_utils | Epoch 62, train_loss=3147.086267
+2025-12-04 05:50:41,554 | INFO | train_utils | Starting epoch 62
+2025-12-04 05:50:46,737 | INFO | train_utils | Saved checkpoint at epoch 63 to checkpoints/checkpoint_step_625.pt
+2025-12-04 05:50:52,254 | INFO | train_utils | Epoch 63, train_loss=3253.897791
+2025-12-04 05:50:52,255 | INFO | train_utils | Starting epoch 63
+2025-12-04 05:51:02,333 | INFO | train_utils | Epoch 64, train_loss=5148.201215
+2025-12-04 05:51:02,334 | INFO | train_utils | Starting epoch 64
+2025-12-04 05:51:12,383 | INFO | train_utils | Epoch 65, train_loss=3999.872021
+2025-12-04 05:51:12,384 | INFO | train_utils | Starting epoch 65
+2025-12-04 05:51:22,534 | INFO | train_utils | Epoch 66, train_loss=4999.144586
+2025-12-04 05:51:22,535 | INFO | train_utils | Starting epoch 66
+2025-12-04 05:51:32,972 | INFO | train_utils | Epoch 67, train_loss=4233.942151
+2025-12-04 05:51:32,973 | INFO | train_utils | Starting epoch 67
+2025-12-04 05:51:43,247 | INFO | train_utils | Epoch 68, train_loss=2764.876575
+2025-12-04 05:51:43,248 | INFO | train_utils | Starting epoch 68
+2025-12-04 05:51:53,573 | INFO | train_utils | Epoch 69, train_loss=4490.230774
+2025-12-04 05:51:53,573 | INFO | train_utils | Starting epoch 69
+2025-12-04 05:52:03,915 | INFO | train_utils | Epoch 70, train_loss=3915.156921
+2025-12-04 05:52:03,915 | INFO | train_utils | Starting epoch 70
+2025-12-04 05:52:14,255 | INFO | train_utils | Epoch 71, train_loss=4230.794189
+2025-12-04 05:52:14,256 | INFO | train_utils | Starting epoch 71
+2025-12-04 05:52:24,596 | INFO | train_utils | Epoch 72, train_loss=3200.948450
+2025-12-04 05:52:24,597 | INFO | train_utils | Starting epoch 72
+2025-12-04 05:52:34,799 | INFO | train_utils | Epoch 73, train_loss=4625.699988
+2025-12-04 05:52:34,799 | INFO | train_utils | Starting epoch 73
+2025-12-04 05:52:52,187 | INFO | train_utils | Train steps: 20000
+2025-12-04 05:52:52,187 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 05:52:52,189 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 05:52:52,189 | INFO | train_utils | Starting epoch 0
+2025-12-04 05:53:02,289 | INFO | train_utils | Epoch 1, train_loss=9568.481201
+2025-12-04 05:53:02,289 | INFO | train_utils | Starting epoch 1
+2025-12-04 05:53:12,297 | INFO | train_utils | Epoch 2, train_loss=6549.646509
+2025-12-04 05:53:12,297 | INFO | train_utils | Starting epoch 2
+2025-12-04 05:53:22,545 | INFO | train_utils | Epoch 3, train_loss=6477.033917
+2025-12-04 05:53:22,545 | INFO | train_utils | Starting epoch 3
+2025-12-04 05:53:33,039 | INFO | train_utils | Epoch 4, train_loss=7056.067395
+2025-12-04 05:53:33,040 | INFO | train_utils | Starting epoch 4
+2025-12-04 05:53:43,346 | INFO | train_utils | Epoch 5, train_loss=5238.772107
+2025-12-04 05:53:43,347 | INFO | train_utils | Starting epoch 5
+2025-12-04 05:53:53,645 | INFO | train_utils | Epoch 6, train_loss=4399.396100
+2025-12-04 05:53:53,645 | INFO | train_utils | Starting epoch 6
+2025-12-04 05:54:03,587 | INFO | train_utils | Epoch 7, train_loss=4646.199280
+2025-12-04 05:54:03,587 | INFO | train_utils | Starting epoch 7
+2025-12-04 05:54:13,762 | INFO | train_utils | Epoch 8, train_loss=6112.427295
+2025-12-04 05:54:13,762 | INFO | train_utils | Starting epoch 8
+2025-12-04 05:54:23,732 | INFO | train_utils | Epoch 9, train_loss=5551.017834
+2025-12-04 05:54:23,733 | INFO | train_utils | Starting epoch 9
+2025-12-04 05:54:33,925 | INFO | train_utils | Epoch 10, train_loss=4008.685522
+2025-12-04 05:54:33,925 | INFO | train_utils | Starting epoch 10
+2025-12-04 05:54:44,383 | INFO | train_utils | Epoch 11, train_loss=4983.477148
+2025-12-04 05:54:44,383 | INFO | train_utils | Starting epoch 11
+2025-12-04 05:54:54,603 | INFO | train_utils | Epoch 12, train_loss=5402.702747
+2025-12-04 05:54:54,604 | INFO | train_utils | Starting epoch 12
+2025-12-04 05:55:05,036 | INFO | train_utils | Epoch 13, train_loss=4728.467480
+2025-12-04 05:55:05,037 | INFO | train_utils | Starting epoch 13
+2025-12-04 05:55:15,450 | INFO | train_utils | Epoch 14, train_loss=3811.532532
+2025-12-04 05:55:15,451 | INFO | train_utils | Starting epoch 14
+2025-12-04 05:55:25,890 | INFO | train_utils | Epoch 15, train_loss=4803.893823
+2025-12-04 05:55:25,890 | INFO | train_utils | Starting epoch 15
+2025-12-04 05:55:36,258 | INFO | train_utils | Epoch 16, train_loss=6122.061182
+2025-12-04 05:55:36,258 | INFO | train_utils | Starting epoch 16
+2025-12-04 05:55:46,621 | INFO | train_utils | Epoch 17, train_loss=3666.834094
+2025-12-04 05:55:46,621 | INFO | train_utils | Starting epoch 17
+2025-12-04 05:55:56,744 | INFO | train_utils | Epoch 18, train_loss=4737.088336
+2025-12-04 05:55:56,748 | INFO | train_utils | Starting epoch 18
+2025-12-04 05:56:06,874 | INFO | train_utils | Epoch 19, train_loss=4024.121777
+2025-12-04 05:56:06,874 | INFO | train_utils | Starting epoch 19
+2025-12-04 05:56:17,114 | INFO | train_utils | Epoch 20, train_loss=4250.743988
+2025-12-04 05:56:17,114 | INFO | train_utils | Starting epoch 20
+2025-12-04 05:56:27,427 | INFO | train_utils | Epoch 21, train_loss=4825.289661
+2025-12-04 05:56:27,427 | INFO | train_utils | Starting epoch 21
+2025-12-04 05:56:37,900 | INFO | train_utils | Epoch 22, train_loss=3559.407910
+2025-12-04 05:56:37,902 | INFO | train_utils | Starting epoch 22
+2025-12-04 05:56:48,246 | INFO | train_utils | Epoch 23, train_loss=4159.556177
+2025-12-04 05:56:48,247 | INFO | train_utils | Starting epoch 23
+2025-12-04 05:56:58,615 | INFO | train_utils | Epoch 24, train_loss=4109.138953
+2025-12-04 05:56:58,616 | INFO | train_utils | Starting epoch 24
+2025-12-04 05:57:09,093 | INFO | train_utils | Epoch 25, train_loss=5398.576855
+2025-12-04 05:57:09,093 | INFO | train_utils | Starting epoch 25
+2025-12-04 05:57:19,333 | INFO | train_utils | Epoch 26, train_loss=5791.644531
+2025-12-04 05:57:19,333 | INFO | train_utils | Starting epoch 26
+2025-12-04 05:57:29,554 | INFO | train_utils | Epoch 27, train_loss=5612.586481
+2025-12-04 05:57:29,554 | INFO | train_utils | Starting epoch 27
+2025-12-04 05:57:40,007 | INFO | train_utils | Epoch 28, train_loss=3834.010446
+2025-12-04 05:57:40,008 | INFO | train_utils | Starting epoch 28
+2025-12-04 05:57:50,726 | INFO | train_utils | Epoch 29, train_loss=5117.968982
+2025-12-04 05:57:50,726 | INFO | train_utils | Starting epoch 29
+2025-12-04 05:58:01,190 | INFO | train_utils | Epoch 30, train_loss=3092.788635
+2025-12-04 05:58:01,190 | INFO | train_utils | Starting epoch 30
+2025-12-04 05:58:11,617 | INFO | train_utils | Epoch 31, train_loss=5885.428833
+2025-12-04 05:58:11,617 | INFO | train_utils | Starting epoch 31
+2025-12-04 05:58:21,870 | INFO | train_utils | Epoch 32, train_loss=4273.383215
+2025-12-04 05:58:21,870 | INFO | train_utils | Starting epoch 32
+2025-12-04 05:58:33,060 | INFO | train_utils | Epoch 33, train_loss=4044.706296
+2025-12-04 05:58:33,060 | INFO | train_utils | Starting epoch 33
+2025-12-04 05:58:43,356 | INFO | train_utils | Epoch 34, train_loss=5109.112781
+2025-12-04 05:58:43,356 | INFO | train_utils | Starting epoch 34
+2025-12-04 05:58:54,886 | INFO | train_utils | Epoch 35, train_loss=5004.348853
+2025-12-04 05:58:54,886 | INFO | train_utils | Starting epoch 35
+2025-12-04 05:59:06,715 | INFO | train_utils | Epoch 36, train_loss=4431.641028
+2025-12-04 05:59:06,716 | INFO | train_utils | Starting epoch 36
+2025-12-04 05:59:17,148 | INFO | train_utils | Epoch 37, train_loss=4066.070154
+2025-12-04 05:59:17,149 | INFO | train_utils | Starting epoch 37
+2025-12-04 05:59:27,469 | INFO | train_utils | Epoch 38, train_loss=3339.107910
+2025-12-04 05:59:27,470 | INFO | train_utils | Starting epoch 38
+2025-12-04 05:59:37,812 | INFO | train_utils | Epoch 39, train_loss=4630.816064
+2025-12-04 05:59:37,812 | INFO | train_utils | Starting epoch 39
+2025-12-04 05:59:48,678 | INFO | train_utils | Epoch 40, train_loss=4555.000244
+2025-12-04 05:59:48,679 | INFO | train_utils | Starting epoch 40
+2025-12-04 05:59:59,051 | INFO | train_utils | Epoch 41, train_loss=5166.452252
+2025-12-04 05:59:59,051 | INFO | train_utils | Starting epoch 41
+2025-12-04 06:00:09,467 | INFO | train_utils | Epoch 42, train_loss=4883.736328
+2025-12-04 06:00:09,467 | INFO | train_utils | Starting epoch 42
+2025-12-04 06:00:19,954 | INFO | train_utils | Epoch 43, train_loss=4599.525952
+2025-12-04 06:00:19,955 | INFO | train_utils | Starting epoch 43
+2025-12-04 06:00:30,806 | INFO | train_utils | Epoch 44, train_loss=5333.310791
+2025-12-04 06:00:30,806 | INFO | train_utils | Starting epoch 44
+2025-12-04 06:00:41,061 | INFO | train_utils | Epoch 45, train_loss=4001.259534
+2025-12-04 06:00:41,061 | INFO | train_utils | Starting epoch 45
+2025-12-04 06:00:51,697 | INFO | train_utils | Epoch 46, train_loss=3857.428345
+2025-12-04 06:00:51,697 | INFO | train_utils | Starting epoch 46
+2025-12-04 06:01:01,891 | INFO | train_utils | Epoch 47, train_loss=3105.626505
+2025-12-04 06:01:01,892 | INFO | train_utils | Starting epoch 47
+2025-12-04 06:01:12,645 | INFO | train_utils | Epoch 48, train_loss=5090.446747
+2025-12-04 06:01:12,646 | INFO | train_utils | Starting epoch 48
+2025-12-04 06:01:22,804 | INFO | train_utils | Epoch 49, train_loss=4022.541199
+2025-12-04 06:01:22,805 | INFO | train_utils | Starting epoch 49
+2025-12-04 06:01:32,856 | INFO | train_utils | Epoch 50, train_loss=3963.950879
+2025-12-04 06:01:32,856 | INFO | train_utils | Starting epoch 50
+2025-12-04 06:01:43,306 | INFO | train_utils | Epoch 51, train_loss=5596.152087
+2025-12-04 06:01:43,307 | INFO | train_utils | Starting epoch 51
+2025-12-04 06:01:53,935 | INFO | train_utils | Epoch 52, train_loss=3789.293066
+2025-12-04 06:01:53,936 | INFO | train_utils | Starting epoch 52
+2025-12-04 06:02:04,274 | INFO | train_utils | Epoch 53, train_loss=4843.878711
+2025-12-04 06:02:04,275 | INFO | train_utils | Starting epoch 53
+2025-12-04 06:02:14,697 | INFO | train_utils | Epoch 54, train_loss=3822.385779
+2025-12-04 06:02:14,697 | INFO | train_utils | Starting epoch 54
+2025-12-04 06:02:25,348 | INFO | train_utils | Epoch 55, train_loss=2728.219720
+2025-12-04 06:02:25,348 | INFO | train_utils | Starting epoch 55
+2025-12-04 06:02:35,849 | INFO | train_utils | Epoch 56, train_loss=2610.670209
+2025-12-04 06:02:35,850 | INFO | train_utils | Starting epoch 56
+2025-12-04 06:02:46,360 | INFO | train_utils | Epoch 57, train_loss=4467.968329
+2025-12-04 06:02:46,361 | INFO | train_utils | Starting epoch 57
+2025-12-04 06:02:56,631 | INFO | train_utils | Epoch 58, train_loss=4737.984558
+2025-12-04 06:02:56,632 | INFO | train_utils | Starting epoch 58
+2025-12-04 06:03:07,374 | INFO | train_utils | Epoch 59, train_loss=4890.177417
+2025-12-04 06:03:07,375 | INFO | train_utils | Starting epoch 59
+2025-12-04 06:03:17,737 | INFO | train_utils | Epoch 60, train_loss=3532.847925
+2025-12-04 06:03:17,738 | INFO | train_utils | Starting epoch 60
+2025-12-04 06:03:31,173 | INFO | train_utils | Train steps: 20000
+2025-12-04 06:03:31,173 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 06:03:31,215 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+t_embed_norm: depth=1, type=LayerNorm, params=736
+text_embed_norm: depth=1, type=LayerNorm, params=736
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 06:03:31,216 | INFO | train_utils | Starting epoch 0
+2025-12-04 06:03:41,747 | INFO | train_utils | Epoch 1, train_loss=5192.237402
+2025-12-04 06:03:41,748 | INFO | train_utils | Starting epoch 1
+2025-12-04 06:03:52,638 | INFO | train_utils | Epoch 2, train_loss=6406.709717
+2025-12-04 06:03:52,638 | INFO | train_utils | Starting epoch 2
+2025-12-04 06:04:03,324 | INFO | train_utils | Epoch 3, train_loss=5090.217712
+2025-12-04 06:04:03,325 | INFO | train_utils | Starting epoch 3
+2025-12-04 06:04:13,917 | INFO | train_utils | Epoch 4, train_loss=6409.392871
+2025-12-04 06:04:13,918 | INFO | train_utils | Starting epoch 4
+2025-12-04 06:04:24,465 | INFO | train_utils | Epoch 5, train_loss=4632.664734
+2025-12-04 06:04:24,465 | INFO | train_utils | Starting epoch 5
+2025-12-04 06:04:35,029 | INFO | train_utils | Epoch 6, train_loss=5953.371411
+2025-12-04 06:04:35,030 | INFO | train_utils | Starting epoch 6
+2025-12-04 06:04:46,001 | INFO | train_utils | Epoch 7, train_loss=4869.469403
+2025-12-04 06:04:46,002 | INFO | train_utils | Starting epoch 7
+2025-12-04 06:08:19,423 | INFO | train_utils | Train steps: 20000
+2025-12-04 06:08:19,423 | INFO | train_utils | TensorBoard log_dir: /workspaces/geometric-algebra-transformer/runs/ga_mdm
+2025-12-04 06:08:19,424 | INFO | train_utils | Leaf module depths:
+embed_text: depth=1, type=Linear, params=282992
+t_embed_norm: depth=1, type=LayerNorm, params=736
+text_embed_norm: depth=1, type=LayerNorm, params=736
+node_pe_norm: depth=1, type=LayerNorm, params=32
+mv_proj: depth=1, type=ModuleDict, params=0
+mv_type_emb: depth=1, type=ParameterDict, params=0
+sequence_pos_encoder.dropout: depth=2, type=Dropout, params=0
+poseHead.merge_norm: depth=2, type=LayerNorm, params=736
+node_pe.0: depth=2, type=Linear, params=112
+node_pe.1: depth=2, type=ReLU, params=0
+node_pe.2: depth=2, type=Linear, params=272
+embed_timestep.time_embed.0: depth=3, type=Linear, params=135792
+embed_timestep.time_embed.1: depth=3, type=SiLU, params=0
+embed_timestep.time_embed.2: depth=3, type=Linear, params=135792
+seqTransDecoder.layers.0.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.0.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.0.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.0.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.0.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.1.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.1.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.1.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.1.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.2.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.2.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.2.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.2.dropout3: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear1: depth=4, type=Linear, params=543168
+seqTransDecoder.layers.3.dropout: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.linear2: depth=4, type=Linear, params=542064
+seqTransDecoder.layers.3.norm1: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm2: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.norm3: depth=4, type=LayerNorm, params=736
+seqTransDecoder.layers.3.dropout1: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout2: depth=4, type=Dropout, params=0
+seqTransDecoder.layers.3.dropout3: depth=4, type=Dropout, params=0
+poseHead.heads.log_acceleration_root_translator.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_translator.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_translator.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_translator.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_acceleration_root_rotor.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_root_rotor.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_root_rotor.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_root_rotor.3: depth=4, type=Linear, params=1107
+poseHead.heads.log_velocity_root_translator_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_translator_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_translator_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_translator_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_velocity_root_rotor_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_root_rotor_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_root_rotor_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_root_rotor_0.3: depth=4, type=Linear, params=369
+poseHead.heads.log_acceleration_body_rotors.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_acceleration_body_rotors.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_acceleration_body_rotors.2: depth=4, type=GELU, params=0
+poseHead.heads.log_acceleration_body_rotors.3: depth=4, type=Linear, params=23247
+poseHead.heads.log_velocity_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_velocity_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_velocity_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_velocity_body_rotors_0.3: depth=4, type=Linear, params=7749
+poseHead.heads.log_body_rotors_0.0: depth=4, type=LayerNorm, params=736
+poseHead.heads.log_body_rotors_0.1: depth=4, type=Linear, params=135792
+poseHead.heads.log_body_rotors_0.2: depth=4, type=GELU, params=0
+poseHead.heads.log_body_rotors_0.3: depth=4, type=Linear, params=7749
+seqTransDecoder.layers.0.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.0.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.1.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.2.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.self_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+seqTransDecoder.layers.3.multihead_attn.out_proj: depth=5, type=NonDynamicallyQuantizableLinear, params=135792
+2025-12-04 06:08:19,424 | INFO | train_utils | Starting epoch 0
+2025-12-04 06:08:30,199 | INFO | train_utils | Epoch 1, train_loss=8215.975317
+2025-12-04 06:08:30,199 | INFO | train_utils | Starting epoch 1
+2025-12-04 06:08:40,637 | INFO | train_utils | Epoch 2, train_loss=7798.778809
+2025-12-04 06:08:40,637 | INFO | train_utils | Starting epoch 2
+2025-12-04 06:08:51,782 | INFO | train_utils | Epoch 3, train_loss=6739.617944
+2025-12-04 06:08:51,782 | INFO | train_utils | Starting epoch 3
+2025-12-04 06:09:02,541 | INFO | train_utils | Epoch 4, train_loss=6899.765527
+2025-12-04 06:09:02,541 | INFO | train_utils | Starting epoch 4
+2025-12-04 06:09:13,244 | INFO | train_utils | Epoch 5, train_loss=5352.698730
+2025-12-04 06:09:13,245 | INFO | train_utils | Starting epoch 5
+2025-12-04 06:09:24,422 | INFO | train_utils | Epoch 6, train_loss=5880.009155
+2025-12-04 06:09:24,422 | INFO | train_utils | Starting epoch 6
+2025-12-04 06:09:35,192 | INFO | train_utils | Epoch 7, train_loss=5822.576953
+2025-12-04 06:09:35,192 | INFO | train_utils | Starting epoch 7
+2025-12-04 06:09:45,792 | INFO | train_utils | Epoch 8, train_loss=5451.569360
+2025-12-04 06:09:45,792 | INFO | train_utils | Starting epoch 8
+2025-12-04 06:09:56,344 | INFO | train_utils | Epoch 9, train_loss=5710.321338
+2025-12-04 06:09:56,345 | INFO | train_utils | Starting epoch 9
+2025-12-04 06:10:07,494 | INFO | train_utils | Epoch 10, train_loss=7467.529346
+2025-12-04 06:10:07,495 | INFO | train_utils | Starting epoch 10
+2025-12-04 06:10:18,263 | INFO | train_utils | Epoch 11, train_loss=5936.244760
+2025-12-04 06:10:18,263 | INFO | train_utils | Starting epoch 11
+2025-12-04 06:10:29,420 | INFO | train_utils | Epoch 12, train_loss=6249.478857
+2025-12-04 06:10:29,420 | INFO | train_utils | Starting epoch 12
+2025-12-04 06:10:40,282 | INFO | train_utils | Epoch 13, train_loss=5196.763953
+2025-12-04 06:10:40,282 | INFO | train_utils | Starting epoch 13
+2025-12-04 06:10:51,175 | INFO | train_utils | Epoch 14, train_loss=7673.485352
+2025-12-04 06:10:51,176 | INFO | train_utils | Starting epoch 14
+2025-12-04 06:11:02,076 | INFO | train_utils | Epoch 15, train_loss=5042.285278
+2025-12-04 06:11:02,076 | INFO | train_utils | Starting epoch 15
+2025-12-04 06:11:12,672 | INFO | train_utils | Epoch 16, train_loss=3400.188702
+2025-12-04 06:11:12,673 | INFO | train_utils | Starting epoch 16
+2025-12-04 06:11:23,450 | INFO | train_utils | Epoch 17, train_loss=5387.264148
+2025-12-04 06:11:23,451 | INFO | train_utils | Starting epoch 17
+2025-12-04 06:11:34,034 | INFO | train_utils | Epoch 18, train_loss=5849.648779
+2025-12-04 06:11:34,034 | INFO | train_utils | Starting epoch 18
+2025-12-04 06:11:44,879 | INFO | train_utils | Epoch 19, train_loss=5407.434253
+2025-12-04 06:11:44,879 | INFO | train_utils | Starting epoch 19
+2025-12-04 06:11:55,386 | INFO | train_utils | Epoch 20, train_loss=5208.293549
+2025-12-04 06:11:55,386 | INFO | train_utils | Starting epoch 20
+2025-12-04 06:12:06,156 | INFO | train_utils | Epoch 21, train_loss=3159.648853
+2025-12-04 06:12:06,156 | INFO | train_utils | Starting epoch 21
+2025-12-04 06:12:16,697 | INFO | train_utils | Epoch 22, train_loss=3826.160168
+2025-12-04 06:12:16,698 | INFO | train_utils | Starting epoch 22
+2025-12-04 06:12:27,363 | INFO | train_utils | Epoch 23, train_loss=4338.900879
+2025-12-04 06:12:27,364 | INFO | train_utils | Starting epoch 23
+2025-12-04 06:12:38,091 | INFO | train_utils | Epoch 24, train_loss=7175.970020
+2025-12-04 06:12:38,092 | INFO | train_utils | Starting epoch 24

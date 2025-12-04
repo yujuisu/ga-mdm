@@ -77,7 +77,8 @@ def compute_loss(output, answers, diffuse_shapes, hierarchy_scale: float = 1.0, 
         'log_velocity_root_rotor', 'log_velocity_root_translator', 'log_velocity_body_rotors'
     ]
     acc_keys = [
-        'log_acceleration_root_rotor', 'log_acceleration_root_translator', 'log_acceleration_body_rotors'
+        'log_acceleration_root_rotor', 'log_acceleration_root_translator', 
+        'log_acceleration_body_rotors'
     ]
     # (Optional) you can include 'log_chained_body_rotors' under pos if needed.
     

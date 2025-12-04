@@ -68,6 +68,9 @@ class TimestepEmbedder(nn.Module):
             nn.SiLU(),
             nn.Linear(time_embed_dim, time_embed_dim),
         )
+        # zero-init final layer so time embed starts near 0 (reduces early spikes)
+        nn.init.zeros_(self.time_embed[-1].weight)
+        nn.init.zeros_(self.time_embed[-1].bias)
 
     def forward(self, timesteps):
         return self.time_embed(self.sequence_pos_encoder.pe[timesteps]).permute(1, 0, 2)
@@ -157,7 +160,7 @@ class ga_mdm(nn.Module):
         self.latent_dim = self.mv_latent_dim * 23
         self.dropout = 0.1
         self.num_heads = 8
-        self.num_layers = 8
+        self.num_layers = 4
         self.ff_size = self.latent_dim * 4
         self.cond_mask_prob = 0.1
         self.activation = 'gelu'
@@ -183,6 +186,16 @@ class ga_mdm(nn.Module):
         self.node_pe = simple_mlp(6, self.mv_latent_dim).to(device)
         self.node_pe_scale = nn.Parameter(torch.tensor(0.1, device=device))
         self.alphas_cum = get_alphas_cum()
+
+        # Add normalization and a learned scale for timestep embedding
+        self.t_embed_norm = nn.LayerNorm(self.latent_dim).to(device)
+        self.t_embed_scale = nn.Parameter(torch.tensor(0.1, device=device))  # small initial influence
+        # Optional: also normalize text embedding to align scales
+        self.text_embed_norm = nn.LayerNorm(self.latent_dim).to(device)
+
+        # NEW: normalize and gate node positional encodings (per-node latent)
+        self.node_pe_norm = nn.LayerNorm(self.mv_latent_dim).to(device)
+        self.node_pe_gate = nn.Parameter(torch.tensor(0.1, device=device))  # small initial influence
 
         # Lazy per-multivector projection heads and type embeddings
         self.mv_proj = nn.ModuleDict()         # key -> WSLinear(F_k, latent_dim)
@@ -215,7 +228,10 @@ class ga_mdm(nn.Module):
         x_lin = self.mv_proj[k](x.permute(2, 1, 3, 0))  # [nodes, T, B, latent]
         # add node positional encoding
         if 'body' in k:
-            x_lin = x_lin + self.node_pe_scale * graph_pe_latent[:nodes].view(nodes, 1, 1, -1)  
+            # graph_pe_latent: [total_nodes, mv_latent_dim] -> normalize per-node features
+            pe_nodes = self.node_pe_norm(graph_pe_latent[:nodes])  # [nodes, mv_latent_dim]
+            x_lin = x_lin + (self.node_pe_gate * self.node_pe_scale) * pe_nodes.view(nodes, 1, 1, -1)
+
         x_lin = x_lin + self.mv_type_emb[k].view(1, 1, 1, -1)
         # flatten nodes & time into sequence tokens
         # keep time dimension (T) for timewise positional encoding:
@@ -232,7 +248,7 @@ class ga_mdm(nn.Module):
             # Just a key of full lengths
             lengths = lengths[FULL_LENGTH_KEY]
             diffuse_shapes = [(batch[k].shape[0], batch[k].shape[2]) for k in DIFFUSE_KEYS]
-            prefix, batch = diffuse_lie_data(batch, noise_level, DIFFUSE_KEYS, self.alphas_cum)
+            prefix, batch = diffuse_lie_data(batch, noise_level, DIFFUSE_KEYS, self.alphas_cum, pred_len=0)
             diffused = batch.copy()
             # batch = accumulations(batch)
             keys = list(batch.keys())
@@ -269,7 +285,10 @@ class ga_mdm(nn.Module):
 
         level_emb = self.embed_timestep(noise_level.to(device))
         text_emb = self.embed_text(self.mask_cond(enc_text, force_mask=False))  # casting mask for the single-prompt-for-all case
-        emb = text_emb + level_emb
+        # Normalize and softly gate timestep embedding before summation
+        level_emb = self.t_embed_norm(level_emb)
+        text_emb = self.text_embed_norm(text_emb)
+        emb = text_emb + self.t_embed_scale * level_emb
 
         # batch = torch.cat((emb, batch), axis=0)
         batch = self.sequence_pos_encoder(batch)
