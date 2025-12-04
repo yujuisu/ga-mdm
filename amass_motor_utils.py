@@ -6,7 +6,7 @@ alg = Algebra(3, 0, 1)
 locals().update(alg.blades)
 
 
-smpl = np.load('model.npz')
+smpl = np.load('serialized/model.npz')
 kinematic_child_parent = list(enumerate(smpl['kintree_table'][0][1:22], start=1))
 
 def xyz_to_point(v):

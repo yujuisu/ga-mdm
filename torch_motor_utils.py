@@ -1,13 +1,11 @@
 from kingdon import Algebra, MultiVector
 import torch
 from data_loader import JOINT_TRANSLATORS
+from amass_motor_utils import kinematic_child_parent
 from typing import Tuple
-import json
 
 alg = Algebra(3, 0, 1)
 locals().update(alg.blades)
-with open('serialized/kinematic_child_parent.json') as f:
-    kinematic_child_parent = json.load(f)
 
 # exp/log
 def null_exp(B: MultiVector)-> MultiVector:
