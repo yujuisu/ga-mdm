@@ -6,3 +6,4 @@ lab/
 test_data/
 
 training.log
+*.npz
