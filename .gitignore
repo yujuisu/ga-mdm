@@ -4,3 +4,5 @@ runs/
 checkpoints/
 lab/
 test_data/
+
+training.log
