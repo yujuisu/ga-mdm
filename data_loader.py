@@ -218,30 +218,16 @@ def construct_text_metadata(text_dir):
 TEXT_LIST_MAP = construct_text_metadata('texts')
 
 class NPZDictDataset(Dataset):
-    def __init__(self, data_dir, keys=None, transform=None, fixed_length=0):
+    def __init__(self, data_dir, keys=None, transform=None, context_len=0, pred_len=0):
         self.files = sorted(Path(data_dir).glob("*.npz"))
         self.keys = keys  # list of keys to keep, or None for all
         # self.transform = transform
-        self.fixed_length = fixed_length
+        self.context_len = context_len
+        self.pred_len = pred_len
 
     def __len__(self):
         return len(self.files)
     
-    def random_start(self, motion):
-        # Crop the motions in to times of 4, and introduce small variations
-        # And randomize the starting point
-        m_length = motion.shape[1]
-        coin2 = np.random.choice(['single', 'single', 'double'])
-        
-        if coin2 == 'double':
-            m_length = (m_length // UNIT_LENGTH - 1) * UNIT_LENGTH
-        elif coin2 == 'single':
-            m_length = (m_length // UNIT_LENGTH) * UNIT_LENGTH
-        print(motion.shape)
-        # idx = random.randint(0, m_length - UNIT_LENGTH)
-        # print('m', m_length, 'idx', idx, 'idx+m_length', idx+m_length)
-        # motion = motion[:, idx:idx+m_length]
-        return motion
 
     def __getitem__(self, id):
         path = self.files[id]
@@ -261,10 +247,15 @@ class NPZDictDataset(Dataset):
                     motion = data[k_]
                 data_[k] = motion
 
-            #--random crop to FIXED_LENGTH
-            if self.fixed_length:
+            #--random crop to pred_len
+            max_total_len = self.pred_len + self.context_len
+            if self.pred_len:
                 m_length = data_[FULL_LENGTH_KEY].shape[1]
-                random_start_idx = random.randint(0, max(0, m_length - self.fixed_length))
+                assert m_length >= self.pred_len + 2, f"Motion length {m_length} is less than pred_len + 2 {self.pred_len + 2}"
+                max_start = m_length - self.pred_len - 2
+                random_start_idx = random.randint(0, max(0, max_start))
+                # +2 because we want to predict acceleration
+                random_end_idx = random.randint(random_start_idx + 2 + self.pred_len, random_start_idx + self.pred_len + max_total_len)
                 
                 for k in self.keys:
                     offset = 0
@@ -272,12 +263,12 @@ class NPZDictDataset(Dataset):
                         offset = 1
                     elif 'acceleration' in k:
                         offset = 2
-                    seq_len = self.fixed_length - offset
                     if '_0' in k:
                         data_[k] = data_[k][:, random_start_idx:random_start_idx + 1, :]
                     else:
-                        data_[k] = data_[k][:, random_start_idx:random_start_idx + seq_len, :]
-            #--random crop to FIXED_LENGTH
+                        data_[k] = data_[k][:, random_start_idx:random_end_idx - offset, :]
+                        assert data_[k].shape[1] > 0, f"After cropping, motion length for key {k} is zero."
+            #--random crop to pred_len
             
             data = np_map_to_torch(data_, self.keys)
             data['text_caption'] = text['caption']
@@ -343,7 +334,7 @@ def _apply_identity_padding(batch: dict):
             lens = lengths_dict.get(key, fallback_len)
             _identity_pad_mv_inplace(val, lens, key)
 
-def dict_array_collate_fn(batch):
+def dict_array_collate_fn(batch, pred_len=0):
     """
     Pads and batches a list of dictionaries containing PyTorch tensors.
     
@@ -354,32 +345,41 @@ def dict_array_collate_fn(batch):
     Returns:
         dict: A single dictionary with batched/padded tensors.
     """
-    
+    # Filter out None samples to avoid DataLoader errors
+    valid_batch = [item for item in batch if item is not None]
+    dropped = len(batch) - len(valid_batch)
+    if dropped > 0:
+        print(f"dict_array_collate_fn: dropped {dropped} invalid sample(s) (None).")
+    batch = valid_batch
     # Check if the batch is empty
+        # Check if the batch is empty after filtering
     if not batch:
+        print("dict_array_collate_fn: empty batch after filtering invalid samples.")
         return {}
-    
-    batch = batch
 
     # Get all keys from the first dictionary (assuming all samples have the same keys)
     keys = batch[0].keys()
     
     # Initialize the container for the batched result
     batched_data = {"lengths": {}, 'batch_size': len(batch)}
-    # prefix_data = {} if pred_len > 0 else None
+    pred_data = {} if pred_len > 0 else None
     
     for key in keys:
         # 1. Extract all values for the current key across all samples
         data_list = [item[key] for item in batch]
-        
         # 2. Check the data type for the current key
         if isinstance(data_list[0], torch.Tensor):
             # Pad the sequences to the length of the longest one in this batch.
             # batch_first=True makes the result shape (batch_size, max_length, ...)
             permuted_tensors = []
+            pred_tensors = []
             lengths = []
             for t in data_list:
                 # Dynamic permutation for any rank > 1:
+                if '_0' not in key:
+                    if pred_len > 0:
+                        t, pred = t[:, :-pred_len, :], t[:, -pred_len:, :]
+                        pred_tensors.append(pred)
                 dims = list(range(t.dim()))
                 # Move dimension 1 to the front
                 permute_order = [dims[1]] + dims[:1] + dims[2:] 
@@ -392,26 +392,23 @@ def dict_array_collate_fn(batch):
                 target_permute_order = [2, 0, 3, 1]
                 # batched_data[key] = padded_batch_permuted
                 final_padded_batch = padded_batch_permuted.permute(*target_permute_order)
-                
-                # FINAL SHAPE: [Batch_Size, Max_L, 3, 1]
-                # if pred_len > 0:
-                #     batched_data[key] = final_padded_batch[:, -pred_len:, :, :]
-                #     prefix_data[key] = final_padded_batch[:, :-pred_len, :, :]
-                # else:
                 batched_data[key] = final_padded_batch
                 # Create mask
                 if '_0' not in key:
-                    # max_len = padded_batch_permuted.shape[0]
-                    # mask_tuple = lengths, max_len
-                    # mask = torch.zeros(, dtype=torch.bool)
-                    # for idx, seq_len in enumerate(lengths):
-                    #     mask[idx, :seq_len] = True
                     batched_data["lengths"][key] = lengths
             except RuntimeError as e:
                 # Catching issues if the Tensors don't have the same rank (e.g., mixing 1D and 2D)
                 print(f"Error padding key '{key}': {e}")
                 # Fallback to simple stacking for non-sequence data (like labels)
                 batched_data[key] = torch.stack(data_list)
+
+            if pred_len > 0 and '_0' not in key:
+                try:
+                    pred_data[key] = torch.stack(pred_tensors).permute(1,2,3,0)
+                except RuntimeError as e:
+            
+                    print('stack', [(key, s.shape, t.shape) for s, t in zip(data_list, pred_tensors)])
+                    raise e
                 
         elif isinstance(data_list[0], (int, float, bool, torch.LongTensor, torch.FloatTensor)):
             # --- SIMPLE STACKING (for scalar/label data) ---
@@ -421,9 +418,10 @@ def dict_array_collate_fn(batch):
             # --- REMAINDER (e.g., strings, metadata) ---
             # For data types that cannot be batched, just return the list
             batched_data[key] = data_list
+
             
     # Ensure the expected [K, T, C, B] layout for MV arrays before identity padding.
     # Apply identity padding for motors/rotors.
     _apply_identity_padding(batched_data)
     
-    return batched_data
+    return batched_data, pred_data

@@ -62,69 +62,51 @@ def mv_to_flat_normalized(mv, stats_key):
     return flattened.permute(0, 2, 1, 3).flatten(end_dim=1).permute(1, 2, 0)
 
 
+def mv_dict_flatten(batch):
+    keys = list(batch.keys())
+    new_keys = []
+    for k in keys:
+        if not isinstance(batch[k], MultiVector):
+            continue
+        stats_key = k.replace('_0', '').replace('_1', '')
+        if stats_key not in STATS_MAP:
+            continue
+        batch[k] = kingdon_flatten(batch[k])                      # [blades, nodes, T, B]
+        batch[k] = flat_normalize(batch[k], stats_key)
+        new_keys.append(k)
+    return new_keys
+
+
 def gaussian_from_stats(mean=0.0, M2=0.0, t_count=0, unbiased=True):
     mean, std = mean_std_from_stats(mean, M2, t_count, unbiased)
     return Independent(Normal(mean, std), 1)
 
 
 def diffuse_lie_data(torch_data, noise_level, diffuse_keys, alpha_cum, pred_len=0):
+    # 0 is the highest noise_level
     r = alpha_cum[noise_level]
     diffused_data = {}
-    prefix_data = {}
+
     for k in diffuse_keys:
         # temperary fix for _0 keys
         if k.endswith('_0'):
             if pred_len > 0:
-                prefix_data[k] = alg.multivector(keys=KEY_MAP[k.replace('_0', '')], values=torch_data[k][:, :1, ...].to(device))
                 continue
-            else:
-                diffused_data[k] = alg.multivector(keys=KEY_MAP[k.replace('_0', '')], values=torch_data[k][:, :1, ...].to(device))
+            torch_data[k] = torch_data[k][:, :1, ...]
         dist = gaussian_from_stats(**STATS_MAP[k])
-        
-        if pred_len > 0:
-            sample = dist.sample((pred_len, torch_data[k].shape[-1])).permute(2, 0, 3, 1).to(torch_data[k].device)
-            target_data = torch_data[k][:, -pred_len:, ...]
-        else:
-            sample = dist.sample((torch_data[k].shape[1], torch_data[k].shape[-1])).permute(2, 0, 3, 1).to(torch_data[k].device)
-            target_data = torch_data[k]
+        sample = dist.sample((torch_data[k].shape[1], torch_data[k].shape[-1])).permute(2, 0, 3, 1).to(torch_data[k].device)
+        target_data = torch_data[k]
         blended = ((1 - r) * target_data + r * sample).to(device)
         diffused_data[k] = alg.multivector(keys=KEY_MAP[k.replace('_0', '')], values=blended)
-        if pred_len > 0:
-            prefix_data[k] = alg.multivector(keys=KEY_MAP[k.replace('_0', '')], values=torch_data[k][:, :-pred_len, ...].to(device))
-    return prefix_data, diffused_data
+    return diffused_data
 
 
-def accumulations(batch: Dict[str, Any]) -> Dict[str, Any]:
-    # Implement the forward pass logic here
-    keys = list(batch.keys())
-    for k in keys:
-        if 'lengths' in k:
-            continue
-        if 'rotor' in k:
-            batch[k.replace('log_', '')] = rot_exp(batch[k])
-        elif 'translator' in k:
-            batch[k.replace('log_', '')] = null_exp(batch[k])
-        else:
-            continue
-    # root motor
-    acceleration = batch['acceleration_root_translator'] * batch['acceleration_root_rotor']
-    initial = batch['velocity_root_translator_0'] * batch['velocity_root_rotor_0']
-    velocity = cumprod(initial, acceleration)
-    # same initial because started in body frame--no translation and rotation in the first frame
-    batch['root_motor_1'] = initial
-    batch['root_motor'] = cumprod(batch['root_motor_1'], velocity)
-    batch['velocity_root'] = velocity
-    batch['floor_1'] = ~batch['root_motor_1'] >> batch['floor_0']
-    batch['floor'] = ~batch['root_motor']>> batch['floor_0']
-
-    # body rotors
-    acceleration = batch['acceleration_body_rotors']
-    initial = batch['velocity_body_rotors_0']
-    velocity = cumprod(initial, acceleration)
-    batch['body_rotors_1'] = batch['body_rotors_0'] * initial
-    batch['body_rotors'] = cumprod(batch['body_rotors_1'], velocity)
-    batch['velocity_body_rotors'] = velocity
-    batch['chained_body_rotors'] = chain_accumulate(batch['body_rotors'])
-    batch['chained_body_rotors_1'] = chain_accumulate(batch['body_rotors_1'])
-    batch['chained_body_rotors_0'] = chain_accumulate(batch['body_rotors_0'])        
-    return batch
+def flat_to_mv(torch_data, diffuse_keys):
+    diffused_data = {}
+    for k in diffuse_keys:
+        v = torch_data[k]
+        # temperary fix for _0 keys
+        if k.endswith('_0'):
+            diffused_data[k] = alg.multivector(keys=KEY_MAP[k.replace('_0', '')], values=v[:, :1, ...].to(device))
+        diffused_data[k] = alg.multivector(keys=KEY_MAP[k.replace('_0', '')], values=v.to(device))
+    return diffused_data

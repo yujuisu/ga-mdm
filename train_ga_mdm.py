@@ -39,26 +39,30 @@ if __name__ == "__main__":
     from tqdm import tqdm
     from torch.utils.data import DataLoader, RandomSampler, BatchSampler
     from torch.utils.tensorboard import SummaryWriter
+    from functools import partial
     # Optional Anomaly Detection (enable via env)
     # if os.getenv("TORCH_ANOMALY_DETECT", "0") == "1":
     #     torch.autograd.set_detect_anomaly(True)
     monitor_grads = os.getenv("MONITOR_GRADS", "0") == "1"
-    num_steps = 20000
+    num_steps = 200000
     batch_size = 8 if monitor_grads else 32
+    pred_len = 1
+    context_len = 32
+    fixed_length = context_len + pred_len
     # data_path = "joints"
     data_path = "test_data"
-    dataset = NPZDictDataset(data_path, keys=set(DIFFUSE_KEYS + ANSWER_KEYS), fixed_length=40)
+    dataset = NPZDictDataset(data_path, keys=set(DIFFUSE_KEYS + ANSWER_KEYS), pred_len=pred_len, context_len=context_len)
     # ---for repeat sampling during debugging---
     steps_per_epoch = 10
     sampler = RandomSampler(dataset, replacement=True,
                 num_samples=batch_size * steps_per_epoch)
     batch_sampler = BatchSampler(sampler, batch_size=batch_size, drop_last=True)
     # ---for repeat sampling during debugging---
-
-    loader = DataLoader(dataset, batch_sampler=batch_sampler, num_workers=8, collate_fn=dict_array_collate_fn, pin_memory=True)
+    collate_fn = partial(dict_array_collate_fn, pred_len=1)
+    loader = DataLoader(dataset, batch_sampler=batch_sampler, num_workers=8, collate_fn=collate_fn, pin_memory=True)
     num_epochs = num_steps // (batch_size*steps_per_epoch)
     save_interval = 5000 // batch_size
-    model = ga_mdm()
+    model = ga_mdm(fixed_length=fixed_length, pred_len=pred_len)
     opt = AdamW(
         # with amp, we don't need to use the mp_trainer's master_params
         model.parameters(),
@@ -69,7 +73,7 @@ if __name__ == "__main__":
     lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         opt,
         mode='min',
-        factor=0.9,
+        factor=0.98,
         patience=5,
         min_lr=1e-6,
     )
@@ -98,12 +102,12 @@ if __name__ == "__main__":
     for epoch in range(num_epochs):
         logger.info(f'Starting epoch {epoch}')
         total_loss = 0.0
-        for batch in tqdm(loader):
+        for batch, pred in tqdm(loader):
             step += 1
             t, weights = schedule_sampler.sample(batch['batch_size'])
             # TESTING: fixed noise level
             # t = torch.ones(batch_size, dtype=torch.int64) * 5
-            batch, answers, diffuse_shapes = model(batch, t)
+            batch, answers, diffuse_shapes = model(batch, pred, t)
 
             loss = compute_loss(batch, answers, diffuse_shapes)
             with torch.no_grad():

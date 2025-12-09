@@ -32,7 +32,7 @@ def setup_logger(name=__name__, level=None, log_file=None):
     sh.setFormatter(fmt)
     sh.setLevel(lvl)
     logger.addHandler(sh)
-    lf = log_file or os.getenv("LOG_FILE")
+    lf = log_file or os("LOG_FILE")
     if lf:
         fh = logging.FileHandler(lf)
         fh.setFormatter(fmt)
@@ -172,13 +172,6 @@ class AutoRegressiveSampler():
 
 
 def dictionary_flatten(flattened):
-    # motor_template = flattened['chained_body_rotors']
-    # id_motor_tensor = torch.zeros_like(motor_template[:1])
-    # id_motor_tensor[..., 0] = 1.0
-
-    lie_template = flattened['log_velocity_root_translator_0']
-    id_lie_tensor = torch.zeros_like(lie_template[:1])
-
     flattened = {
         # 'floor': [flattened[k] for k in ['floor_0', 'floor_1', 'floor']],
         # 'root_motor': [id_motor_tensor]+[flattened[k] for k in ['root_motor_1', 'root_motor']],
@@ -187,12 +180,39 @@ def dictionary_flatten(flattened):
         'root_translator': [flattened[k] for k in ['id_lie_tensor', 'log_velocity_root_translator_0', 'log_acceleration_root_translator']],
         'root_rotor': [flattened[k] for k in ['id_lie_tensor', 'log_velocity_root_rotor_0', 'log_acceleration_root_rotor']],
     }
-
+    # print([[t.shape for t in l] for l in flattened.values()])
     flattened = {k: torch.cat(v, dim=0) for k, v in flattened.items()}
     return torch.cat(list(flattened.values()), dim=1).permute(0, 2, 1)
+
+def pred_dictionary_flatten(flattened):
+    return torch.cat(list(flattened.values()), dim=1).permute(0, 2, 1)
+
+def prefix_dictionary_flatten(flattened):
+    flattened0 = {
+        # 'floor': [flattened[k] for k in ['floor_0', 'floor_1', 'floor']],
+        'root_motor': [flattened[k] for k in ['id_motor_tensor', 'root_motor_1', 'root_motor']],
+        'chained_body_rotors': [flattened[k] for k in ['chained_body_rotors_0', 'chained_body_rotors_1', 'chained_body_rotors']],
+        # 'body_rotors': [flattened[k] for k in ['log_body_rotors_0', 'log_velocity_body_rotors_0', 'log_acceleration_body_rotors']],
+        # 'root_translator': [flattened[k] for k in ['id_lie_tensor', 'log_velocity_root_translator_0', 'log_acceleration_root_translator']],
+        # 'root_rotor': [flattened[k] for k in ['id_lie_tensor', 'log_velocity_root_rotor_0', 'log_acceleration_root_rotor']],
+    }
+    flattened0 = {k: torch.cat(v, dim=0) for k, v in flattened0.items()}
+    flattened0 = torch.cat(list(flattened0.values()), dim=1).permute(0, 2, 1)
+    flattened1 = {
+        # 'floor': [flattened[k] for k in ['floor_0', 'floor_1', 'floor']],
+        # 'root_motor': [flattened[k] for k in ['id_motor_tensor', 'root_motor_1', 'root_motor']],
+        # 'chained_body_rotors': [flattened[k] for k in ['chained_body_rotors_0', 'chained_body_rotors_1', 'chained_body_rotors']],
+        'body_rotors': [flattened[k] for k in ['log_body_rotors_0', 'log_velocity_body_rotors_0', 'log_acceleration_body_rotors']],
+        'root_translator': [flattened[k] for k in ['id_lie_tensor', 'log_velocity_root_translator_0', 'log_acceleration_root_translator']],
+        'root_rotor': [flattened[k] for k in ['id_lie_tensor', 'log_velocity_root_rotor_0', 'log_acceleration_root_rotor']],
+    }
+    flattened1 = {k: torch.cat(v, dim=0) for k, v in flattened1.items()}
+    flattened1 = torch.cat(list(flattened1.values()), dim=1).permute(0, 2, 1)
+    
+    return flattened0, flattened1
     
 
-def create_mask(lengths, max_len=None, reserve_index0=0):
+def create_mask(lengths, max_len=None, reserve_index0=0, pred_len=0):
     """
     Returns src_key_padding_mask with True only at PAD positions.
     Shape: [batch, S], where S == 1 + max_len (index 0 reserved for special token).

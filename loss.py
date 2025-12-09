@@ -39,7 +39,7 @@ def accumulations(batch: Dict[str, Any]) -> Dict[str, Any]:
     return batch
 
 
-def compute_loss(output, answers, diffuse_shapes, hierarchy_scale: float = 1.0, use_ema=False):
+def compute_loss(output, answers, diffuse_shapes, hierarchy_scale: float = 1000.0, use_ema=False):
     # output = flattened_to_mv_dict(output, DIFFUSE_KEYS, diffuse_shapes)
     output = accumulations(output)
     ans_root_motor = alg.multivector(keys=KEY_MAP['root_motor'], values=answers.pop('root_motor')[:, 2:].to(device))
@@ -82,7 +82,7 @@ def compute_loss(output, answers, diffuse_shapes, hierarchy_scale: float = 1.0, 
     ]
     # (Optional) you can include 'log_chained_body_rotors' under pos if needed.
     
-    LOSS_KEYS = acc_keys #+ vel_keys + pos_keys + chained_pos_keys
+    LOSS_KEYS = acc_keys + vel_keys + pos_keys + chained_pos_keys
 
     # Flatten & normalize
     flat_losses = {}
@@ -100,9 +100,9 @@ def compute_loss(output, answers, diffuse_shapes, hierarchy_scale: float = 1.0, 
 
     # Build category weights vector aligned with concatenated loss features
     cat_weights = []
-    acc_w = hierarchy_scale ** 3
-    vel_w = hierarchy_scale ** 2 
-    pos_w = hierarchy_scale
+    acc_w = hierarchy_scale ** 5
+    vel_w = hierarchy_scale ** 4
+    pos_w = hierarchy_scale ** 1
     chained_w = 1.0
     for k in LOSS_KEYS:
         w = chained_w if k in chained_pos_keys else pos_w if k in pos_keys else vel_w if k in vel_keys else acc_w
