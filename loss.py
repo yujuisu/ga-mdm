@@ -82,7 +82,7 @@ def compute_loss(output, answers, diffuse_shapes, hierarchy_scale: float = 1000.
     ]
     # (Optional) you can include 'log_chained_body_rotors' under pos if needed.
     
-    LOSS_KEYS = acc_keys + vel_keys + pos_keys + chained_pos_keys
+    LOSS_KEYS = acc_keys + vel_keys #+ pos_keys + chained_pos_keys
 
     # Flatten & normalize
     flat_losses = {}

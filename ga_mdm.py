@@ -100,7 +100,8 @@ class MultiBranchPoseHead(nn.Module):
     def __init__(self, latent_dim: int, use_merge_norm: bool = True, pred_len: int = 0):
         super().__init__()
         # Define output blocks (match DIFFUSE_KEYS ordering you flatten later)
-        if pred_len > 0:
+        self.pred_len = pred_len
+        if self.pred_len > 0:
             diffuse_keys = [k for k in DIFFUSE_KEYS if not k.endswith('_0')]
         else:
             diffuse_keys = DIFFUSE_KEYS
@@ -133,12 +134,13 @@ class MultiBranchPoseHead(nn.Module):
             stats_key = k.replace('_0', '').replace('_1', '')
             frame_start_idx = 0
             new_T = T
-            if 'velocity' in k:
-                frame_start_idx = 1
-                new_T -= 1
-            if 'acceleration' in k:
-                frame_start_idx = 2
-                new_T -= 2
+            if self.pred_len == 0:
+                if 'velocity' in k:
+                    frame_start_idx = 1
+                    new_T -= 1
+                if 'acceleration' in k:
+                    frame_start_idx = 2
+                    new_T -= 2
             # reshape to [blades, new_T, nodes, B]
             y = y[frame_start_idx:, :, :].reshape(new_T, B, blades, nodes).permute(2, 0, 3, 1)
 
@@ -189,7 +191,8 @@ class ga_mdm(nn.Module):
         self.ff_size = self.latent_dim * 4
         self.cond_mask_prob = 0.1
         self.activation = 'gelu'
-        self.sequence_pos_encoder = PositionalEncoding(self.latent_dim, self.dropout, max_len=self.fixed_length or 200).to(device)
+        self.max_length = self.fixed_length * 2 if self.fixed_length is not None else 200
+        self.sequence_pos_encoder = PositionalEncoding(self.latent_dim, self.dropout, max_len=self.max_length).to(device)
         self.embed_timestep = TimestepEmbedder(self.latent_dim, self.sequence_pos_encoder).to(device)
         seqTransDecoderLayer = nn.TransformerDecoderLayer(
             d_model=self.latent_dim,
@@ -206,7 +209,7 @@ class ga_mdm(nn.Module):
 
         self.clip_dim = 768
         self.embed_text = nn.Linear(self.clip_dim, self.latent_dim).to(device)
-        self.poseHead = MultiBranchPoseHead(self.latent_dim).to(device)
+        self.poseHead = MultiBranchPoseHead(self.latent_dim, pred_len=self.pred_len).to(device)
         # Node (graph) positional encoding once; reuse for all multivectors
         self.node_pe = simple_mlp(6, self.mv_latent_dim).to(device)
         self.node_pe_scale = nn.Parameter(torch.tensor(0.1, device=device))
@@ -286,8 +289,11 @@ class ga_mdm(nn.Module):
             keys_pred = mv_dict_flatten(pred)
             if self.pred_len:
                 prefix = batch
+                prefix_tensors = deepcopy(prefix)
                 prefix = flat_to_mv(prefix, DIFFUSE_KEYS)
+                
                 prefix = accumulations(prefix)
+                trajectory = deepcopy(prefix)
                 keys_prefix = mv_dict_flatten(prefix)
                 prefix['id_lie_tensor'] = torch.zeros_like(prefix['log_velocity_root_translator_0'])
                 keys_prefix.append('id_lie_tensor')
@@ -297,6 +303,7 @@ class ga_mdm(nn.Module):
             else:
                 pred['id_lie_tensor'] = torch.zeros_like(pred['log_velocity_root_translator_0'])
                 keys_pred.append('id_lie_tensor')
+                trajectory = None
 
         # Precompute node graph PE in latent space and pool across nodes to a global graph token
         # GRAPH_PE: [nodes, 6] -> graph_pe_latent_nodes: [nodes, latent]
@@ -315,11 +322,7 @@ class ga_mdm(nn.Module):
 
         else:
             pred = dictionary_flatten(pred)
-        
-        
-        # batch = torch.nan_to_num(batch, nan=0.0, posinf=10.0, neginf=-10.0)
-        # batch = torch.clamp(batch, -10., 10.)
-        # log_tensor_stats("input/after_flatten", batch, level=logging.DEBUG)
+
 
         # Prepare text conditioning
         with torch.no_grad():
@@ -385,4 +388,4 @@ class ga_mdm(nn.Module):
                 tgt_key_padding_mask=tgt_key_padding_mask,
             )
         pred = self.poseHead(pred, diffused)
-        return pred, answers, diffuse_shapes
+        return pred, answers, diffuse_shapes, trajectory, prefix_tensors, lengths
