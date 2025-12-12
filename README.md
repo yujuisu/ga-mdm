@@ -43,7 +43,7 @@ Download an amass motion [npz file](https://drive.google.com/file/d/1ekkGu1YAFpP
 2. [Blending and Animation](tutorials/amass_instaneous_lie_alg.ipynb)
 3. [Torch implementations](torch_motor_utils.py) of logarithms/exponentials are carefully treated to have non-singular gradient.
 
-## Directions
+## Getting Further
 1. Build CGENN's geometric product layer and replace the linear layer to catch multilinearity and nonlinearity of powers.
 2. Replace the transformer with GATr
 3. Instead of GATr's full 16-dim multivector, use the 8-dim even subalgebra.
