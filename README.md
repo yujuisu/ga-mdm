@@ -42,7 +42,7 @@ To monitor gradient on tensorboard:
 ```bash
 export MONITOR_GRADS=1
 ```
-To try the autoregressive version:
+To try the autoregressive version (yet finish):
 ```bash
 export AUTOREG=1
 ```

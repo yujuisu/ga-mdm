@@ -38,7 +38,6 @@ class PositionalEncoding(nn.Module):
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
         pe = pe.unsqueeze(0).transpose(0, 1)
-
         self.register_buffer('pe', pe)
 
     def forward(self, x, start_pos=0):
@@ -167,7 +166,7 @@ def build_time_causal_mask(seq_len: int, device: torch.device) -> torch.Tensor:
   
 
 class ga_mdm(nn.Module):
-    def __init__(self, fixed_length: Optional[int] = None, pred_len: int = 0):
+    def __init__(self, fixed_length: int = 0, pred_len: int = 0):
         super(ga_mdm, self).__init__()
         self.pred_len = pred_len
         self.mv_latent_dim = 16
@@ -180,7 +179,7 @@ class ga_mdm(nn.Module):
         self.ff_size = self.latent_dim * 4
         self.cond_mask_prob = 0.1
         self.activation = 'gelu'
-        self.max_length = self.fixed_length * 2 if self.fixed_length is not None else 200
+        self.max_length = self.fixed_length * 2 if self.fixed_length else 200
         self.sequence_pos_encoder = PositionalEncoding(self.latent_dim, self.dropout, max_len=self.max_length).to(device)
         self.embed_timestep = TimestepEmbedder(self.latent_dim, self.sequence_pos_encoder).to(device)
         seqTransDecoderLayer = nn.TransformerDecoderLayer(
@@ -382,4 +381,4 @@ class ga_mdm(nn.Module):
                 tgt_key_padding_mask=tgt_key_padding_mask,
             )
         pred = self.poseHead(pred, diffused)
-        return pred, answers, diffuse_shapes, trajectory, prefix_tensors, lengths
+        return pred, answers, diffuse_shapes, trajectory

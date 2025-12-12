@@ -92,7 +92,7 @@ if __name__ == "__main__":
         batch, pred = next(gen)
         step += 1
         t, weights = schedule_sampler.sample(batch['batch_size'])
-        batch, answers, diffuse_shapes, trajectory = model(batch, pred, t)
+        batch, answers, diffuse_shapes = model(batch, pred, t)
         repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
         log_dir = os.getenv("TB_LOGDIR", os.path.join(repo_root, "runs", "ga_mdm"))
         os.makedirs(log_dir, exist_ok=True)
