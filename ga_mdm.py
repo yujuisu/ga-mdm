@@ -3,7 +3,7 @@ from data_loader import *
 from train_utils import *
 from text_encoder import bert_encode_text
 from diffusion import *
-from loss import accumulations
+from loss import accumulations, extract_index_list
 import json
 import numpy as np
 
@@ -20,22 +20,11 @@ import math
 TOTAL_DIFFUSION_STEPS = 50
 DIFFUSE_KEYS = DATA_KEY_LISTS['acceleration_lie_rot_trans_diffuse_keys']
 ANSWER_KEYS = DATA_KEY_LISTS['lie_rot_trans_answer_keys_2']
+TRAJECTORY_KEYS = DATA_KEY_LISTS['trajectory']
+LOSS_KEYS = DATA_KEY_LISTS["loss"]
 FULL_LENGTH_KEY = "chained_body_rotors"
 GRAPH_PE = json.load(open("serialized/graph_pe.json", "r"))
 GRAPH_PE = torch.tensor(GRAPH_PE, dtype=torch.float32, device=device)
-
-LOSS_KEYS = [
-    'log_root_rotor',
-    'log_root_translator',
-    'log_velocity_root_rotor',
-    'log_velocity_root_translator',
-    'log_acceleration_root_rotor',
-    'log_acceleration_root_translator',
-    'log_body_rotors',
-    'log_velocity_body_rotors',
-    'log_acceleration_body_rotors',
-    'log_chained_body_rotors',
-    ]
 
 
 class PositionalEncoding(nn.Module):
@@ -289,11 +278,16 @@ class ga_mdm(nn.Module):
             keys_pred = mv_dict_flatten(pred)
             if self.pred_len:
                 prefix = batch
-                prefix_tensors = deepcopy(prefix)
+                trajectory = {}
+                for k in TRAJECTORY_KEYS:
+                    offset = 0
+                    if 'velocity' in k:
+                        offset = 1
+                    inds = torch.tensor(lengths) - 1 - offset  # [B]
+                    trajectory = extract_index_list(prefix)
                 prefix = flat_to_mv(prefix, DIFFUSE_KEYS)
                 
                 prefix = accumulations(prefix)
-                trajectory = deepcopy(prefix)
                 keys_prefix = mv_dict_flatten(prefix)
                 prefix['id_lie_tensor'] = torch.zeros_like(prefix['log_velocity_root_translator_0'])
                 keys_prefix.append('id_lie_tensor')

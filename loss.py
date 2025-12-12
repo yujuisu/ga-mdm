@@ -138,3 +138,12 @@ def compute_loss(output, answers, diffuse_shapes, hierarchy_scale: float = 1000.
         combined_w = torch.clamp(combined_w, min=1e-6, max=10.0)
 
     return torch.sum(combined_w * all_loss_vec)
+
+
+def extract_index_list(tensor, _list):
+    pref = tensor  # [blades, T, nodes, B]
+    inds = torch.tensor(_list, device=pref.device) - 1  # [B]
+    p = pref.permute(3, 0, 1, 2)  # [B, blades, T, nodes]
+    # build index tensor for gather: [B, blades, 1, nodes]
+    idx = inds.view(-1, 1, 1, 1).expand(-1, p.shape[1], 1, p.shape[3])
+    return torch.gather(p, dim=2, index=idx).squeeze(2)[:, :, 0]  # [B, blades], node=0

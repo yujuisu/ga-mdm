@@ -16,11 +16,9 @@ cp -r ga-mdm/.devcontainer .devcontainer
 devcontainer up --workspace-folder .
 devcontainer exec --workspace-folder . bash
 ```
-4. Download [/test_data](https://drive.google.com/drive/folders/1oodEd9QcgN8sVvtXP13Vr6PtaXrcHrZh?usp=sharing) 
-Put it under /ga_mdm
+4. Download [/test_data](https://drive.google.com/drive/folders/1oodEd9QcgN8sVvtXP13Vr6PtaXrcHrZh?usp=sharing) to /ga_mdm
 
-And download the [SMPL model](https://drive.google.com/file/d/13gsD8FCqZNsA-0YHNRYnJBixjV7uSThP/view?usp=sharing)
-Put it under /serialized
+And download the [SMPL model](https://drive.google.com/file/d/13gsD8FCqZNsA-0YHNRYnJBixjV7uSThP/view?usp=sharing) to /serialized
 
 5. Upzip texts.zip
 6. Test training:
@@ -39,7 +37,11 @@ To try the autoregressive version:
 ```bash
 export AUTOREG=1
 ```
-
+## Tutorials of Geometric Algebra on the SMPL model
+Download an amass motion [npz file](https://drive.google.com/file/d/1ekkGu1YAFpPnX_MiL9nWE3UZ2yH3mitp/view?usp=sharing) to /serialized
+1. [SMPL model](tutorials/amass_motor.ipynb)
+2. [Blending and Animation](tutorials/amass_instaneous_lie_alg.ipynb)
+3. [Torch implementations](torch_motor_utils.py) of logarithms/exponentials are carefully treated to have non-singular gradient.
 
 ## Directions
 1. Build CGENN's geometric product layer and replace the linear layer to catch multilinearity and nonlinearity of powers.

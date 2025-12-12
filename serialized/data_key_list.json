@@ -76,5 +76,21 @@
     "log_root_translator",
     "log_root_rotor",
     "log_body_rotors"
-  ]
+  ],
+  "trajectory": ["root_motor",
+    "velocity_root_motor",
+    "body_rotors",
+    "velocity_body_rotors"],
+    "loss": [
+    "log_root_rotor",
+    "log_root_translator",
+    "log_velocity_root_rotor",
+    "log_velocity_root_translator",
+    "log_acceleration_root_rotor",
+    "log_acceleration_root_translator",
+    "log_body_rotors",
+    "log_velocity_body_rotors",
+    "log_acceleration_body_rotors",
+    "log_chained_body_rotors"
+    ]
 }
