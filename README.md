@@ -1,3 +1,6 @@
+# Geometric Algebra Infused Motion Diffusion Model
+The original goal is to beat the MDM model. But I lose interest after realizing they train on the inverse-kinematic motion. I want to train on real motion (with orientation), to have more potential on robotics, dynamics, and interaction with geometric objects.
+
 ## Getting Start
 I set the environment to run with GATr (requires docker or a pc with ubuntu 20.04). Otherwise you just need Kingdon, Torch and Transformers.
 1. Clone GATr.
