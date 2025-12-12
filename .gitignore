@@ -7,4 +7,5 @@ test_data/
 
 training.log
 *.npz
+*.npy
 gamdm_prefix.ipynb
