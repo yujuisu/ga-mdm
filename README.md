@@ -27,7 +27,13 @@ python train_ga_mdm.py
 ```
 
 ## Data Processing
-Follow the steps of the [notebook](process_data/amass_motor_bivector_263.ipynb)
+Follow the steps of [notebook](process_data/amass_motor_bivector_263.ipynb)
+
+## Visualizing
+Download a [trained model](https://drive.google.com/file/d/1oGA4b4rh-ofxifyV2vlHaznhTbAhe43F/view?usp=sharing)
+
+Follow the steps of [notebook](result_visualization.ipynb)
+
 ## Training
 To monitor gradient on tensorboard:
 ```bash
@@ -41,7 +47,7 @@ export AUTOREG=1
 Download an amass motion [npz file](https://drive.google.com/file/d/1ekkGu1YAFpPnX_MiL9nWE3UZ2yH3mitp/view?usp=sharing) to /serialized
 1. [SMPL model](tutorials/amass_motor.ipynb)
 2. [Blending and Animation](tutorials/amass_instaneous_lie_alg.ipynb)
-3. [Torch implementations](torch_motor_utils.py) of logarithms/exponentials are carefully treated to have non-singular gradient.
+3. [Torch implementations](torch_motor_utils.py) of logarithms/exponentials are carefully treated to have non-singular gradients.
 
 ## Getting Further
 1. Build CGENN's geometric product layer and replace the linear layer to catch multilinearity and nonlinearity of powers.
