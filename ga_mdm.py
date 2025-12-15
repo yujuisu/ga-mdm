@@ -283,7 +283,7 @@ class ga_mdm(nn.Module):
                     if 'velocity' in k:
                         offset = 1
                     inds = torch.tensor(lengths) - 1 - offset  # [B]
-                    trajectory = extract_index_list(prefix)
+                    trajectory[k] = extract_index_list(prefix[k], inds)
                 prefix = flat_to_mv(prefix, DIFFUSE_KEYS)
                 
                 prefix = accumulations(prefix)

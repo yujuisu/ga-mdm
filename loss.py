@@ -146,4 +146,4 @@ def extract_index_list(tensor, _list):
     p = pref.permute(3, 0, 1, 2)  # [B, blades, T, nodes]
     # build index tensor for gather: [B, blades, 1, nodes]
     idx = inds.view(-1, 1, 1, 1).expand(-1, p.shape[1], 1, p.shape[3])
-    return torch.gather(p, dim=2, index=idx).squeeze(2)[:, :, 0]  # [B, blades], node=0
+    return torch.gather(p, dim=2, index=idx).squeeze(2)
